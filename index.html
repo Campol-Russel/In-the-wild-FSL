@@ -1,91 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Meta tags and CSS link remain unchanged -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Classless example • Pico.css</title>
+    <meta
+      name="description"
+      content="Just a pure semantic HTML markup, without .classes.  Built with Pico CSS."
+    />
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
+    <link rel="canonical" href="https://picocss.com/examples/classless/" />
+
+    <!-- Pico.css (Classless version) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+    <style>
+      body {
+        display: flex;
+      }
+
+      #sidebar {
+        width: 200px;
+        background-color: #f1f1f1;
+        position: fixed;
+        height: 100%;
+        overflow: auto;
+      }
+
+      #content {
+        margin-left: 200px;
+        padding: 15px;
+      }
+
+      #sidebar ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #sidebar a {
+        text-decoration: none;
+        color: black;
+        padding: 4px;
+        display: block;
+      }
+
+      #sidebar a:hover {
+        background-color: #ddd;
+      }
+    </style>
   </head>
 
   <body>
-    <!-- Header -->
-    <header>
-      <hgroup>
-        <h1>Classless example</h1>
-        <h2>Just a pure semantic HTML markup, without <code>.classes</code></h2>
-      </hgroup>
-    </header>
-    <!-- ./ Header -->
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <ul>
+        <li><a href="#title">Title</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+        <li><a href="#Abstract">Abstract</a></li>
+        <!--<li><a href="#tables">Tables</a></li>  -->
+        <li><a href="#Forms">Forms</a></li>
+      </ul>
+      
+    </aside>
+    <!-- ./ Sidebar -->
 
-    <!-- Main -->
-    <main>
-      <!-- Preview -->
-      <section id="preview">
-        <!-- Content of the "Preview" section remains unchanged -->
-      </section>
-      <!-- ./ Preview -->
+    <!-- Main content -->
+    <div id="content">
+      <!-- Header -->
+      <header id="title">
+        <hgroup>
+          <h1>In the wild FSL</h1>
+          <h2>Public image dataset</h2>
+        </hgroup>
+      </header>
+      <!-- ./ Header -->
 
-      <!-- Typography-->
-      <section id="typography">
-        <!-- Content of the "Typography" section remains unchanged -->
-      </section>
-      <!-- ./ Typography-->
+      <!-- Main -->
+      <main>
 
-      <!-- Button-->
-      <section id="button">
-        <!-- Content of the "Button" section remains unchanged -->
-      </section>
-      <!-- ./ Button -->
-
-      <!-- Form elements-->
-      <section id="form">
-        <!-- Content of the "Form elements" section remains unchanged -->
-      </section>
-      <!-- ./ Form elements-->
-
-      <!-- Tables -->
-      <section id="tables">
-        <!-- Content of the "Tables" section remains unchanged -->
-      </section>
-      <!-- ./ Tables -->
-
-      <!-- Accordions -->
-      <section id="accordions">
-        <!-- Content of the "Accordions" section remains unchanged -->
-      </section>
-      <!-- ./ Accordions -->
-
-      <!-- Article-->
-      <article id="article">
-        <!-- Content of the "Article" section remains unchanged -->
+        <article id="Abstract">
+          <h1>Abstract</h1>
+              In the Philippines, there is a scarcity of research on the deaf and mute culture, which makes institutions exclusive of allowing opportunities for the growth of the deaf and mute. These people have limited to no access to education, jobs, news, and medical attention due to the lack of interpreters and correct media representation. To bridge this communication gap, this study aims to contribute to the development of real-time and accessible sign language detection and recognition systems. The study introduces a Filipino Sign Language dataset, the alphabet dataset contains images that factor in existing image dataset gaps such as different backgrounds, occlusions, lighting, distance, and image quality. To achieve this, phone cameras were used to capture the alphabet signs in varying environments. Data was collected through 100 adult participants including two professional signers for data validation. The collected data underwent data cleaning and labeling, and the final dataset was benchmarked in different models such as AlexNet, VGGNet, ResNet, DenseNet, SSD, YOLOV2, and SFDet. There are a total of 8,100 images in this open-source dataset, and it is expected to help future researchers and system developers in creating and training robust models to be applied for the general use of the Filipino deaf community.
       </article>
-      <!-- ./ Article-->
-    </main>
-    <!-- ./ Main -->
+      
+      <figure>
+        <img
+          src="img/aleksandar-jason-a562ZEFKW8I-unsplash-2000x1000.jpg"
+          alt="Minimal landscape"
+          style="max-width: 100%; height: auto;" 
+        />
+        <figcaption>
+          <strong>Figure 1:</strong> A captivating minimal landscape captured by Aleksandar Jason. The image showcases the serene beauty of simplicity, highlighting the interplay of light and shadow in a tranquil setting.
+        </figcaption>
+      </figure>
+      </section>
 
-    <!-- Footer -->
-    <footer>
-      <small
-        >Built with <a href="https://picocss.com">Pico</a> •
+        <!-- Tables 
+        <section id="tables">
+          <h2>Tables</h2>
+          <figure>
+            <table role="grid">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Heading</th>
+                  <th scope="col">Heading</th>
+                  <th scope="col">Heading</th>
+                  <th scope="col">Heading</th>
+                  <th scope="col">Heading</th>
+                  <th scope="col">Heading</th>
+                  <th scope="col">Heading</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                  <td>Cell</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </section>
+        -->
+        <!-- Contact Us -->
+        <section id="contact">
+          <h3>Contact Us</h3>
+          <p>If you have any questions, feel free to contact us at:</p>
+          <p>Email: mailto:info@example.com</p>
+          <p>Email: mailto:info@example.com</p>
+          <p>Email: mailto:info@example.com</p>
+          <p>Email: mailto:info@example.com</p>
+        </section>
+
+        <!-- Forms -->
+         
+
+      </main>
+      <!-- Footer -->
+        <footer>
+      <small>
+        Built with <a href="https://picocss.com">Pico</a> •
         <a href="https://github.com/picocss/examples/blob/master/v1-classless/index.html"
           >Source code</a
-        ></small
-      >
+        >
+      </small>
     </footer>
-    <!-- ./ Footer -->
+      <!-- ./ Footer -->
 
-    <!-- Theme Switcher -->
-    <section id="theme-switcher">
-      <label for="theme-select">Theme:</label>
-      <select id="theme-select" onchange="changeTheme(this.value)">
-        <option value="auto">Auto</option>
-        <option value="light">Light</option>
-        <option value="dark">Dark</option>
-      </select>
-    </section>
 
-    <!-- Inline script for theme switching -->
-    <script>
-      function changeTheme(theme) {
-        document.body.dataset.theme = theme;
-      }
-    </script>
+    <!-- Minimal theme switcher -->
+    <script src="js/minimal-theme-switcher.js"></script>
   </body>
 </html>
