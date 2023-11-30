@@ -11,7 +11,7 @@ Explore the Filipino Sign Language (FSL) image dataset. Capturing the richness o
 - [Contact Us](#contact-us)
 
 ## Project Website
-Visit our [project website](https://your-project-website.com).
+Visit our [project website](https://campol-russel.github.io/In-the-wild-FSL/).
 
 ## Description
 The objective of this study is to create and release a Filipino Sign Language (FSL) image dataset for public access. This comprehensive dataset includes 8100 images distributed across 27 classes representing the Filipino Alphabet, contributed by 100 participants who captured 81 images each using their devices. Users interested in utilizing this dataset are kindly requested to follow the provided guidelines and submit a form containing essential information, such as the representative's name, project details, how they intend to use the dataset, and their contact details. The dataset supervisor/s will review these requests to determine eligibility for dataset access. This process ensures that the dataset is used only for its intended purpose and serves as a record of authorized users, making any unauthorized usage easily detectable.
