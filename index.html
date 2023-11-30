@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Classless example • Pico.css</title>
+    <title>FSL Alphabet Image Dataset</title>
     <meta
       name="description"
-      content="Just a pure semantic HTML markup, without .classes.  Built with Pico CSS."
+      content="Explore the Filipino Sign Language (FSL) image dataset. Capturing the richness of FSL through visual representations."
     />
     <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
     <link rel="canonical" href="https://picocss.com/examples/classless/" />
@@ -49,6 +49,19 @@
       #sidebar a:hover {
         background-color: #ddd;
       }
+
+      .image-container {
+        background-color: white;
+        padding: 10px; /* Add padding if needed */
+        border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+      }
+      
+      .image-container img {
+        width: 100%; /* Make the image fill the container */
+        border-radius: 8px; /* Optional: Add border-radius for rounded corners */
+      }
+
     </style>
   </head>
 
@@ -58,9 +71,9 @@
       <ul>
         <li><a href="#title">Title</a></li>
         <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#Abstract">Abstract</a></li>
+        <!-- <li><a href="#Abstract">Abstract</a></li> -->
         <!--<li><a href="#tables">Tables</a></li>  -->
-        <li><a href="#Forms">Forms</a></li>
+        <li><a href="#DatasetAccess">Access Forms</a></li>
       </ul>
       
     </aside>
@@ -71,32 +84,36 @@
       <!-- Header -->
       <header id="title">
         <hgroup>
-          <h1>In the wild FSL</h1>
-          <h2>Public image dataset</h2>
-        </hgroup>
+          <h1>In-The-Wild Filipino Sign
+            Language Alphabet Dataset</h1>
+          <h2>
+            The objective of this study is to create and release a Filipino Sign Language (FSL) image dataset for public access. This comprehensive dataset includes 8100 images distributed across 27 classes representing the Filipino Alphabet, contributed by 100 participants who captured 81 images each using their devices. Users interested in utilizing this dataset are kindly requested to follow the provided guidelines and submit a form containing essential information, such as the representative's name, project details, how they intend to use the dataset, and their contact details. The dataset supervisor/s will review these requests to determine eligibility for dataset access. This process ensures that the dataset is used only for its intended purpose and serves as a record of authorized users, making any unauthorized usage easily detectable.
+          </h2></hgroup>
       </header>
-      <!-- ./ Header -->
 
       <!-- Main -->
       <main>
-
+        <!-- Abstract -->
         <article id="Abstract">
-          <h1>Abstract</h1>
+          <h2>Abstract</h2>
               In the Philippines, there is a scarcity of research on the deaf and mute culture, which makes institutions exclusive of allowing opportunities for the growth of the deaf and mute. These people have limited to no access to education, jobs, news, and medical attention due to the lack of interpreters and correct media representation. To bridge this communication gap, this study aims to contribute to the development of real-time and accessible sign language detection and recognition systems. The study introduces a Filipino Sign Language dataset, the alphabet dataset contains images that factor in existing image dataset gaps such as different backgrounds, occlusions, lighting, distance, and image quality. To achieve this, phone cameras were used to capture the alphabet signs in varying environments. Data was collected through 100 adult participants including two professional signers for data validation. The collected data underwent data cleaning and labeling, and the final dataset was benchmarked in different models such as AlexNet, VGGNet, ResNet, DenseNet, SSD, YOLOV2, and SFDet. There are a total of 8,100 images in this open-source dataset, and it is expected to help future researchers and system developers in creating and training robust models to be applied for the general use of the Filipino deaf community.
       </article>
       
-      <figure>
-        <img
-          src="img/comp.png"
-          alt="Sample Images of the Dataset"
-          style="max-width: 100%; height: auto;" 
-        />
-        <figcaption>
-          <strong>Figure 1:</strong> A captivating minimal landscape captured by Aleksandar Jason. The image showcases the serene beauty of simplicity, highlighting the interplay of light and shadow in a tranquil setting.
-        </figcaption>
-      </figure>
+       <!-- Figure -->
+       <section id="Medias">
+        <div class="image-container">
+          <figure>
+            <img
+              src="img/comp.png"
+              alt="Sample Images of the Dataset"
+              style="max-width: 100%; height: auto;"
+            />
+            <figcaption>
+              <strong>Figure 1:</strong> Sample Visuals of the FSL Alphabet image dataset</figcaption>
+          </figure>
+        </div>
       </section>
-
+    
         <!-- Tables 
         <section id="tables">
           <h2>Tables</h2>
@@ -150,17 +167,53 @@
           </figure>
         </section>
         -->
-        <!-- Contact Us -->
-        <section id="contact">
-          <h3>Contact Us</h3>
-          <p>If you have any questions, feel free to contact us at:</p>
-          <p>Email: mailto:info@example.com</p>
-          <p>Email: mailto:info@example.com</p>
-          <p>Email: mailto:info@example.com</p>
-          <p>Email: mailto:info@example.com</p>
-        </section>
 
         <!-- Forms -->
+        <section id="DatasetAccess">
+          <h2>Dataset Access Request and Usage Guidelines</h2>
+        
+          <p>
+            Thank you for your interest in accessing the Filipino Sign Language (FSL) image dataset. To maintain the integrity and intended use of the dataset, we have established the following guidelines for access requests.
+          </p>
+        
+          <h3>Access Request Process:</h3>
+        
+          <h4>Submission of Request:</h4>
+          <p>
+            Please state your interest in accessing the dataset by submitting a request form. Include your representative's name, project details, intended use of the dataset, and contact details.
+          </p>
+        
+          <h4>Dataset Access Review:</h4>
+          <p>
+            Requests for dataset access undergo a thorough review by our supervisors. This process ensures eligibility and safeguards against any misuse of the dataset. We prioritize its use for intended purposes, promoting ethical and responsible utilization.
+          </p>
+        
+          <h3>Forms</h3>
+          <ul>
+            <li>
+              <a href="path/to/your/document1.docx" download="document1.docx">Document 1</a>
+            </li>
+            <li>
+              <a href="path/to/your/document2.docx" download="document2.docx">Document 2</a>
+            </li>
+            <!-- Add more items as needed -->
+          </ul>
+        
+          <section id="contact">
+            <h3>Contact Us</h3>
+            <p>If you have any questions, feel free to contact us at:</p>
+          
+            <h4>Email:</h4>
+            <ul>
+              <li>arren.antioquia@dlsu.edu.ph</li>
+              <li>campol_russel@dlsu.edu.ph</li>
+              <li>carl_delacruz@dlsu.edu.ph</li>
+              <li>jericho_dizon@dlsu.edu.ph</li>
+            </ul>
+          
+            <h4>Phone:</h4>
+            <p>+63XXX XXX XXXX</p>
+          </section>
          
 
       </main>
