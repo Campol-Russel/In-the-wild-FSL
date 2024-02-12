@@ -48,7 +48,5 @@ If you have any questions, feel free to contact us at:
 - carl_delacruz@dlsu.edu.ph
 - jericho_dizon@dlsu.edu.ph
 
-**Phone:**
-+63XXX XXX XXXX
 
 Built with [Pico](https://picocss.com) • [Source Code](https://github.com/picocss/examples/blob/master/v1-classless/index.html)
