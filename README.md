@@ -144,6 +144,12 @@ For object detection tasks, state-of-the-art models were incorporated, such as S
 The primary metric of interest for classification models was accuracy, while for object detection models, the evaluation was based on the mean Average Precision (mAP).
 
 ### SFDET & SSD Training
+#### Training
+To load the dataset in the model, find the code ```parser.add_argument('--wildfsl_data_path', type=str,default='E:\\fsl dataset new\\dataset_resized', help='WildFSL dataset path')``` and change the path according to where the dataset is saved.
+
+#### Setting the hyperparameters
+For the SFDET and SSD hyperparameters, check the weights below and adjust the hyperparameters according to what is seen in the file.
+[a link](https://github.com/user/repo/blob/branch/other_file.md)
 
 ### YOLOv8 Training
 For YOLOv8, we utilized Google Collab, Ultralytics, and Roboflow
