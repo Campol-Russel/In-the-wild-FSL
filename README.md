@@ -149,8 +149,10 @@ To load the dataset in the model, find the code ```parser.add_argument('--wildfs
 
 #### Setting the hyperparameters
 For the SFDET and SSD hyperparameters, check the weights using the link and adjust the hyperparameters according to what is seen in the file.
-[SFDET-ResNet](Model Weights/SFDet-ResNet50-2023-12-03-08_01_13.540688_train_test_155.txt)
-[SSD](Model Weights/SSD-2023-12-04-02_37_34.744139_train_test_140.txt)
+
+[SFDET-ResNet](SFDet-ResNet50-2023-12-03-08_01_13.540688_train_test_155.txt)
+
+[SSD](SSD-2023-12-04-02_37_34.744139_train_test_140.txt)
 
 
 ### YOLOv8 Training
