@@ -1,0 +1,2002 @@
+------------ Options -------------
+input_channels: 3
+class_count: 28
+dataset: wildfsl
+new_size: 300
+means: (104, 117, 123)
+anchor_config: SFDet-300
+scale_initial: 0.1
+scale_min: 0.2
+scale_max: 1.05
+lr: 0.001
+momentum: 0.9
+weight_decay: 0.0005
+num_epochs: 180
+learning_sched: [120, 150]
+warmup_epoch: 0
+sched_gamma: 0.1
+batch_size: 32
+batch_multiplier: 1
+model: SFDet-ResNet
+basenet: vgg16_reducedfc.pth
+resnet_model: 50
+densenet_model: 121
+resnext_model: 50_32x4d
+efficientnet_v2_model: s
+mobilenet_v3_model: s
+convnext_model: t
+pretrained_model: 2023-12-03 08_01_13.540688_train/155
+coco_weights: None
+loss_config: multibox
+pos_neg_ratio: 3
+mode: test
+use_gpu: True
+max_per_image: 50
+score_threshold: 0.01
+nms_threshold: 0.5
+iou_threshold: 0.5
+voc_config: 0712
+voc_data_path: ../../Datasets/PascalVOC/
+use_07_metric: True
+coco_year: 2017
+coco_data_path: ../../Datasets/Coco/
+bdd_version: 100k
+bdd_data_path: ../../Datasets/bdd100k/
+cityscapes_data_path: ../../Datasets/Cityscapes/
+wildfsl_data_path: ../../Datasets/WildFSL/
+model_save_path: ./weights
+model_test_path: ./tests
+model_eval_path: ./eval
+loss_log_step: 1
+model_save_step: 5
+-------------- End ----------------
+SFDetResNet(
+  (base): ResNet(
+    (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+    (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu): ReLU(inplace=True)
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (3): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (4): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (5): Bottleneck(
+        (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): Bottleneck(
+        (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+        (downsample): Sequential(
+          (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+          (1): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        )
+      )
+      (1): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+      (2): Bottleneck(
+        (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn1): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+        (bn2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (bn3): BatchNorm2d(2048, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU(inplace=True)
+      )
+    )
+    (avgpool): None
+    (fc): None
+  )
+  (fusion_module): ModuleList(
+    (0): BasicConv(
+      (conv): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1))
+      (relu): ReLU(inplace=True)
+    )
+    (1): Sequential(
+      (0): BasicConv(
+        (conv): Conv2d(1024, 512, kernel_size=(2, 2), stride=(1, 1))
+        (relu): ReLU(inplace=True)
+      )
+      (1): PixelShuffle(upscale_factor=2)
+    )
+    (2): Sequential(
+      (0): BasicConv(
+        (conv): Conv2d(2048, 512, kernel_size=(2, 2), stride=(1, 1))
+        (relu): ReLU(inplace=True)
+      )
+      (1): PixelShuffle(upscale_factor=4)
+    )
+  )
+  (batch_norm): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (pyramid_module): ModuleList(
+    (0): BasicConv(
+      (conv): Conv2d(672, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (relu): ReLU(inplace=True)
+    )
+    (1): BasicConv(
+      (conv): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (relu): ReLU(inplace=True)
+    )
+    (2): BasicConv(
+      (conv): Conv2d(512, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (relu): ReLU(inplace=True)
+    )
+    (3): BasicConv(
+      (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+      (relu): ReLU(inplace=True)
+    )
+    (4-5): 2 x BasicConv(
+      (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1))
+      (relu): ReLU(inplace=True)
+    )
+  )
+  (class_head): ModuleList(
+    (0-1): 2 x Conv2d(512, 168, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2-3): 2 x Conv2d(256, 168, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4-5): 2 x Conv2d(256, 112, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (loc_head): ModuleList(
+    (0-1): 2 x Conv2d(512, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (2-3): 2 x Conv2d(256, 24, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (4-5): 2 x Conv2d(256, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  )
+  (softmax): Softmax(dim=-1)
+)
+The number of parameters: 43813760
+loaded trained model 2023-12-03 08_01_13.540688_train/155
+detection: 1/1620 1.9340s 0.0130s
+detection: 2/1620 0.0155s 0.0020s
+detection: 3/1620 0.0145s 0.0020s
+detection: 4/1620 0.0145s 0.0020s
+detection: 5/1620 0.0145s 0.0020s
+detection: 6/1620 0.0145s 0.0020s
+detection: 7/1620 0.0145s 0.0020s
+detection: 8/1620 0.0150s 0.0020s
+detection: 9/1620 0.0145s 0.0020s
+detection: 10/1620 0.0150s 0.0020s
+detection: 11/1620 0.0145s 0.0025s
+detection: 12/1620 0.0135s 0.0020s
+detection: 13/1620 0.0130s 0.0020s
+detection: 14/1620 0.0135s 0.0025s
+detection: 15/1620 0.0130s 0.0020s
+detection: 16/1620 0.0140s 0.0020s
+detection: 17/1620 0.0130s 0.0020s
+detection: 18/1620 0.0135s 0.0025s
+detection: 19/1620 0.0130s 0.0020s
+detection: 20/1620 0.0125s 0.0020s
+detection: 21/1620 0.0125s 0.0020s
+detection: 22/1620 0.0125s 0.0025s
+detection: 23/1620 0.0130s 0.0020s
+detection: 24/1620 0.0130s 0.0020s
+detection: 25/1620 0.0130s 0.0020s
+detection: 26/1620 0.0130s 0.0025s
+detection: 27/1620 0.0130s 0.0035s
+detection: 28/1620 0.0130s 0.0020s
+detection: 29/1620 0.0130s 0.0020s
+detection: 30/1620 0.0125s 0.0020s
+detection: 31/1620 0.0125s 0.0020s
+detection: 32/1620 0.0130s 0.0020s
+detection: 33/1620 0.0130s 0.0020s
+detection: 34/1620 0.0130s 0.0025s
+detection: 35/1620 0.0125s 0.0020s
+detection: 36/1620 0.0125s 0.0025s
+detection: 37/1620 0.0130s 0.0025s
+detection: 38/1620 0.0125s 0.0020s
+detection: 39/1620 0.0130s 0.0030s
+detection: 40/1620 0.0130s 0.0020s
+detection: 41/1620 0.0130s 0.0020s
+detection: 42/1620 0.0130s 0.0025s
+detection: 43/1620 0.0125s 0.0025s
+detection: 44/1620 0.0125s 0.0030s
+detection: 45/1620 0.0125s 0.0015s
+detection: 46/1620 0.0130s 0.0020s
+detection: 47/1620 0.0130s 0.0020s
+detection: 48/1620 0.0130s 0.0020s
+detection: 49/1620 0.0130s 0.0025s
+detection: 50/1620 0.0130s 0.0020s
+detection: 51/1620 0.0130s 0.0020s
+detection: 52/1620 0.0125s 0.0020s
+detection: 53/1620 0.0130s 0.0020s
+detection: 54/1620 0.0125s 0.0015s
+detection: 55/1620 0.0130s 0.0020s
+detection: 56/1620 0.0130s 0.0025s
+detection: 57/1620 0.0130s 0.0020s
+detection: 58/1620 0.0125s 0.0020s
+detection: 59/1620 0.0125s 0.0025s
+detection: 60/1620 0.0125s 0.0020s
+detection: 61/1620 0.0130s 0.0020s
+detection: 62/1620 0.0125s 0.0020s
+detection: 63/1620 0.0125s 0.0020s
+detection: 64/1620 0.0125s 0.0020s
+detection: 65/1620 0.0130s 0.0020s
+detection: 66/1620 0.0130s 0.0020s
+detection: 67/1620 0.0125s 0.0020s
+detection: 68/1620 0.0130s 0.0020s
+detection: 69/1620 0.0130s 0.0020s
+detection: 70/1620 0.0130s 0.0020s
+detection: 71/1620 0.0130s 0.0025s
+detection: 72/1620 0.0125s 0.0020s
+detection: 73/1620 0.0130s 0.0025s
+detection: 74/1620 0.0130s 0.0030s
+detection: 75/1620 0.0125s 0.0030s
+detection: 76/1620 0.0135s 0.0020s
+detection: 77/1620 0.0130s 0.0025s
+detection: 78/1620 0.0130s 0.0020s
+detection: 79/1620 0.0125s 0.0020s
+detection: 80/1620 0.0135s 0.0020s
+detection: 81/1620 0.0130s 0.0020s
+detection: 82/1620 0.0130s 0.0020s
+detection: 83/1620 0.0130s 0.0020s
+detection: 84/1620 0.0125s 0.0025s
+detection: 85/1620 0.0130s 0.0020s
+detection: 86/1620 0.0125s 0.0020s
+detection: 87/1620 0.0135s 0.0025s
+detection: 88/1620 0.0125s 0.0020s
+detection: 89/1620 0.0125s 0.0020s
+detection: 90/1620 0.0130s 0.0020s
+detection: 91/1620 0.0125s 0.0020s
+detection: 92/1620 0.0130s 0.0020s
+detection: 93/1620 0.0130s 0.0020s
+detection: 94/1620 0.0130s 0.0020s
+detection: 95/1620 0.0125s 0.0020s
+detection: 96/1620 0.0125s 0.0020s
+detection: 97/1620 0.0125s 0.0025s
+detection: 98/1620 0.0130s 0.0020s
+detection: 99/1620 0.0125s 0.0020s
+detection: 100/1620 0.0135s 0.0020s
+detection: 101/1620 0.0125s 0.0025s
+detection: 102/1620 0.0130s 0.0020s
+detection: 103/1620 0.0125s 0.0020s
+detection: 104/1620 0.0125s 0.0025s
+detection: 105/1620 0.0130s 0.0020s
+detection: 106/1620 0.0130s 0.0020s
+detection: 107/1620 0.0130s 0.0020s
+detection: 108/1620 0.0130s 0.0020s
+detection: 109/1620 0.0130s 0.0020s
+detection: 110/1620 0.0135s 0.0020s
+detection: 111/1620 0.0125s 0.0020s
+detection: 112/1620 0.0125s 0.0020s
+detection: 113/1620 0.0135s 0.0020s
+detection: 114/1620 0.0125s 0.0020s
+detection: 115/1620 0.0130s 0.0020s
+detection: 116/1620 0.0130s 0.0020s
+detection: 117/1620 0.0130s 0.0020s
+detection: 118/1620 0.0130s 0.0020s
+detection: 119/1620 0.0130s 0.0020s
+detection: 120/1620 0.0130s 0.0020s
+detection: 121/1620 0.0130s 0.0025s
+detection: 122/1620 0.0130s 0.0020s
+detection: 123/1620 0.0125s 0.0020s
+detection: 124/1620 0.0125s 0.0035s
+detection: 125/1620 0.0125s 0.0025s
+detection: 126/1620 0.0125s 0.0020s
+detection: 127/1620 0.0125s 0.0020s
+detection: 128/1620 0.0130s 0.0020s
+detection: 129/1620 0.0130s 0.0020s
+detection: 130/1620 0.0125s 0.0020s
+detection: 131/1620 0.0125s 0.0020s
+detection: 132/1620 0.0130s 0.0020s
+detection: 133/1620 0.0130s 0.0020s
+detection: 134/1620 0.0125s 0.0020s
+detection: 135/1620 0.0130s 0.0020s
+detection: 136/1620 0.0125s 0.0020s
+detection: 137/1620 0.0135s 0.0020s
+detection: 138/1620 0.0125s 0.0020s
+detection: 139/1620 0.0130s 0.0020s
+detection: 140/1620 0.0130s 0.0020s
+detection: 141/1620 0.0130s 0.0025s
+detection: 142/1620 0.0130s 0.0025s
+detection: 143/1620 0.0130s 0.0025s
+detection: 144/1620 0.0125s 0.0025s
+detection: 145/1620 0.0130s 0.0020s
+detection: 146/1620 0.0125s 0.0020s
+detection: 147/1620 0.0125s 0.0020s
+detection: 148/1620 0.0130s 0.0025s
+detection: 149/1620 0.0130s 0.0020s
+detection: 150/1620 0.0125s 0.0025s
+detection: 151/1620 0.0130s 0.0020s
+detection: 152/1620 0.0125s 0.0020s
+detection: 153/1620 0.0130s 0.0020s
+detection: 154/1620 0.0125s 0.0020s
+detection: 155/1620 0.0130s 0.0030s
+detection: 156/1620 0.0130s 0.0020s
+detection: 157/1620 0.0130s 0.0020s
+detection: 158/1620 0.0135s 0.0020s
+detection: 159/1620 0.0130s 0.0020s
+detection: 160/1620 0.0130s 0.0030s
+detection: 161/1620 0.0135s 0.0030s
+detection: 162/1620 0.0135s 0.0025s
+detection: 163/1620 0.0130s 0.0020s
+detection: 164/1620 0.0135s 0.0020s
+detection: 165/1620 0.0130s 0.0020s
+detection: 166/1620 0.0125s 0.0020s
+detection: 167/1620 0.0130s 0.0020s
+detection: 168/1620 0.0130s 0.0020s
+detection: 169/1620 0.0130s 0.0020s
+detection: 170/1620 0.0125s 0.0020s
+detection: 171/1620 0.0125s 0.0030s
+detection: 172/1620 0.0125s 0.0020s
+detection: 173/1620 0.0125s 0.0015s
+detection: 174/1620 0.0130s 0.0020s
+detection: 175/1620 0.0125s 0.0020s
+detection: 176/1620 0.0125s 0.0020s
+detection: 177/1620 0.0135s 0.0020s
+detection: 178/1620 0.0125s 0.0020s
+detection: 179/1620 0.0130s 0.0020s
+detection: 180/1620 0.0130s 0.0015s
+detection: 181/1620 0.0130s 0.0020s
+detection: 182/1620 0.0130s 0.0020s
+detection: 183/1620 0.0130s 0.0045s
+detection: 184/1620 0.0125s 0.0020s
+detection: 185/1620 0.0130s 0.0030s
+detection: 186/1620 0.0125s 0.0020s
+detection: 187/1620 0.0125s 0.0020s
+detection: 188/1620 0.0135s 0.0025s
+detection: 189/1620 0.0125s 0.0020s
+detection: 190/1620 0.0135s 0.0020s
+detection: 191/1620 0.0130s 0.0020s
+detection: 192/1620 0.0125s 0.0020s
+detection: 193/1620 0.0130s 0.0020s
+detection: 194/1620 0.0125s 0.0020s
+detection: 195/1620 0.0125s 0.0025s
+detection: 196/1620 0.0130s 0.0020s
+detection: 197/1620 0.0130s 0.0025s
+detection: 198/1620 0.0130s 0.0020s
+detection: 199/1620 0.0130s 0.0020s
+detection: 200/1620 0.0125s 0.0020s
+detection: 201/1620 0.0130s 0.0020s
+detection: 202/1620 0.0130s 0.0020s
+detection: 203/1620 0.0130s 0.0020s
+detection: 204/1620 0.0130s 0.0020s
+detection: 205/1620 0.0125s 0.0020s
+detection: 206/1620 0.0130s 0.0020s
+detection: 207/1620 0.0130s 0.0020s
+detection: 208/1620 0.0125s 0.0020s
+detection: 209/1620 0.0130s 0.0020s
+detection: 210/1620 0.0125s 0.0015s
+detection: 211/1620 0.0130s 0.0020s
+detection: 212/1620 0.0125s 0.0020s
+detection: 213/1620 0.0130s 0.0020s
+detection: 214/1620 0.0130s 0.0020s
+detection: 215/1620 0.0125s 0.0025s
+detection: 216/1620 0.0130s 0.0020s
+detection: 217/1620 0.0125s 0.0025s
+detection: 218/1620 0.0125s 0.0020s
+detection: 219/1620 0.0130s 0.0020s
+detection: 220/1620 0.0130s 0.0020s
+detection: 221/1620 0.0130s 0.0020s
+detection: 222/1620 0.0130s 0.0020s
+detection: 223/1620 0.0125s 0.0020s
+detection: 224/1620 0.0135s 0.0020s
+detection: 225/1620 0.0125s 0.0020s
+detection: 226/1620 0.0130s 0.0020s
+detection: 227/1620 0.0135s 0.0020s
+detection: 228/1620 0.0125s 0.0020s
+detection: 229/1620 0.0130s 0.0025s
+detection: 230/1620 0.0135s 0.0020s
+detection: 231/1620 0.0130s 0.0020s
+detection: 232/1620 0.0135s 0.0020s
+detection: 233/1620 0.0130s 0.0025s
+detection: 234/1620 0.0130s 0.0020s
+detection: 235/1620 0.0140s 0.0025s
+detection: 236/1620 0.0130s 0.0025s
+detection: 237/1620 0.0130s 0.0020s
+detection: 238/1620 0.0130s 0.0020s
+detection: 239/1620 0.0130s 0.0020s
+detection: 240/1620 0.0125s 0.0020s
+detection: 241/1620 0.0130s 0.0020s
+detection: 242/1620 0.0130s 0.0020s
+detection: 243/1620 0.0130s 0.0020s
+detection: 244/1620 0.0125s 0.0020s
+detection: 245/1620 0.0135s 0.0020s
+detection: 246/1620 0.0125s 0.0025s
+detection: 247/1620 0.0130s 0.0030s
+detection: 248/1620 0.0130s 0.0030s
+detection: 249/1620 0.0130s 0.0025s
+detection: 250/1620 0.0125s 0.0020s
+detection: 251/1620 0.0130s 0.0030s
+detection: 252/1620 0.0130s 0.0025s
+detection: 253/1620 0.0125s 0.0020s
+detection: 254/1620 0.0130s 0.0020s
+detection: 255/1620 0.0130s 0.0025s
+detection: 256/1620 0.0135s 0.0025s
+detection: 257/1620 0.0130s 0.0025s
+detection: 258/1620 0.0135s 0.0020s
+detection: 259/1620 0.0125s 0.0020s
+detection: 260/1620 0.0130s 0.0020s
+detection: 261/1620 0.0125s 0.0025s
+detection: 262/1620 0.0135s 0.0035s
+detection: 263/1620 0.0125s 0.0025s
+detection: 264/1620 0.0130s 0.0020s
+detection: 265/1620 0.0130s 0.0025s
+detection: 266/1620 0.0130s 0.0020s
+detection: 267/1620 0.0130s 0.0030s
+detection: 268/1620 0.0130s 0.0020s
+detection: 269/1620 0.0130s 0.0020s
+detection: 270/1620 0.0125s 0.0025s
+detection: 271/1620 0.0125s 0.0020s
+detection: 272/1620 0.0125s 0.0020s
+detection: 273/1620 0.0130s 0.0025s
+detection: 274/1620 0.0125s 0.0020s
+detection: 275/1620 0.0125s 0.0020s
+detection: 276/1620 0.0130s 0.0020s
+detection: 277/1620 0.0125s 0.0020s
+detection: 278/1620 0.0125s 0.0015s
+detection: 279/1620 0.0125s 0.0020s
+detection: 280/1620 0.0130s 0.0025s
+detection: 281/1620 0.0125s 0.0020s
+detection: 282/1620 0.0130s 0.0020s
+detection: 283/1620 0.0125s 0.0035s
+detection: 284/1620 0.0130s 0.0025s
+detection: 285/1620 0.0125s 0.0025s
+detection: 286/1620 0.0125s 0.0015s
+detection: 287/1620 0.0125s 0.0020s
+detection: 288/1620 0.0125s 0.0025s
+detection: 289/1620 0.0130s 0.0025s
+detection: 290/1620 0.0130s 0.0020s
+detection: 291/1620 0.0130s 0.0025s
+detection: 292/1620 0.0125s 0.0020s
+detection: 293/1620 0.0130s 0.0020s
+detection: 294/1620 0.0125s 0.0025s
+detection: 295/1620 0.0130s 0.0025s
+detection: 296/1620 0.0130s 0.0020s
+detection: 297/1620 0.0130s 0.0025s
+detection: 298/1620 0.0125s 0.0020s
+detection: 299/1620 0.0130s 0.0020s
+detection: 300/1620 0.0125s 0.0020s
+detection: 301/1620 0.0130s 0.0020s
+detection: 302/1620 0.0130s 0.0020s
+detection: 303/1620 0.0130s 0.0020s
+detection: 304/1620 0.0130s 0.0025s
+detection: 305/1620 0.0125s 0.0020s
+detection: 306/1620 0.0130s 0.0030s
+detection: 307/1620 0.0125s 0.0020s
+detection: 308/1620 0.0130s 0.0030s
+detection: 309/1620 0.0125s 0.0020s
+detection: 310/1620 0.0130s 0.0025s
+detection: 311/1620 0.0135s 0.0020s
+detection: 312/1620 0.0125s 0.0030s
+detection: 313/1620 0.0125s 0.0020s
+detection: 314/1620 0.0125s 0.0020s
+detection: 315/1620 0.0130s 0.0020s
+detection: 316/1620 0.0125s 0.0020s
+detection: 317/1620 0.0125s 0.0020s
+detection: 318/1620 0.0130s 0.0025s
+detection: 319/1620 0.0130s 0.0020s
+detection: 320/1620 0.0135s 0.0020s
+detection: 321/1620 0.0125s 0.0025s
+detection: 322/1620 0.0130s 0.0020s
+detection: 323/1620 0.0125s 0.0020s
+detection: 324/1620 0.0130s 0.0030s
+detection: 325/1620 0.0125s 0.0025s
+detection: 326/1620 0.0125s 0.0025s
+detection: 327/1620 0.0130s 0.0020s
+detection: 328/1620 0.0130s 0.0020s
+detection: 329/1620 0.0130s 0.0020s
+detection: 330/1620 0.0125s 0.0020s
+detection: 331/1620 0.0130s 0.0020s
+detection: 332/1620 0.0130s 0.0025s
+detection: 333/1620 0.0130s 0.0025s
+detection: 334/1620 0.0130s 0.0025s
+detection: 335/1620 0.0130s 0.0020s
+detection: 336/1620 0.0125s 0.0025s
+detection: 337/1620 0.0130s 0.0025s
+detection: 338/1620 0.0125s 0.0025s
+detection: 339/1620 0.0125s 0.0020s
+detection: 340/1620 0.0130s 0.0020s
+detection: 341/1620 0.0130s 0.0025s
+detection: 342/1620 0.0130s 0.0020s
+detection: 343/1620 0.0130s 0.0025s
+detection: 344/1620 0.0125s 0.0030s
+detection: 345/1620 0.0130s 0.0025s
+detection: 346/1620 0.0130s 0.0020s
+detection: 347/1620 0.0130s 0.0030s
+detection: 348/1620 0.0130s 0.0025s
+detection: 349/1620 0.0130s 0.0025s
+detection: 350/1620 0.0130s 0.0030s
+detection: 351/1620 0.0130s 0.0035s
+detection: 352/1620 0.0125s 0.0035s
+detection: 353/1620 0.0125s 0.0030s
+detection: 354/1620 0.0125s 0.0020s
+detection: 355/1620 0.0125s 0.0020s
+detection: 356/1620 0.0130s 0.0030s
+detection: 357/1620 0.0125s 0.0025s
+detection: 358/1620 0.0130s 0.0020s
+detection: 359/1620 0.0125s 0.0020s
+detection: 360/1620 0.0125s 0.0020s
+detection: 361/1620 0.0130s 0.0030s
+detection: 362/1620 0.0125s 0.0030s
+detection: 363/1620 0.0130s 0.0030s
+detection: 364/1620 0.0130s 0.0030s
+detection: 365/1620 0.0130s 0.0020s
+detection: 366/1620 0.0130s 0.0035s
+detection: 367/1620 0.0130s 0.0025s
+detection: 368/1620 0.0125s 0.0020s
+detection: 369/1620 0.0130s 0.0020s
+detection: 370/1620 0.0125s 0.0015s
+detection: 371/1620 0.0125s 0.0025s
+detection: 372/1620 0.0130s 0.0020s
+detection: 373/1620 0.0130s 0.0040s
+detection: 374/1620 0.0135s 0.0025s
+detection: 375/1620 0.0125s 0.0020s
+detection: 376/1620 0.0125s 0.0040s
+detection: 377/1620 0.0130s 0.0030s
+detection: 378/1620 0.0125s 0.0030s
+detection: 379/1620 0.0130s 0.0025s
+detection: 380/1620 0.0125s 0.0025s
+detection: 381/1620 0.0130s 0.0025s
+detection: 382/1620 0.0135s 0.0020s
+detection: 383/1620 0.0125s 0.0020s
+detection: 384/1620 0.0130s 0.0025s
+detection: 385/1620 0.0135s 0.0025s
+detection: 386/1620 0.0125s 0.0020s
+detection: 387/1620 0.0130s 0.0025s
+detection: 388/1620 0.0125s 0.0025s
+detection: 389/1620 0.0125s 0.0020s
+detection: 390/1620 0.0130s 0.0020s
+detection: 391/1620 0.0125s 0.0025s
+detection: 392/1620 0.0130s 0.0025s
+detection: 393/1620 0.0125s 0.0025s
+detection: 394/1620 0.0130s 0.0025s
+detection: 395/1620 0.0135s 0.0025s
+detection: 396/1620 0.0125s 0.0030s
+detection: 397/1620 0.0130s 0.0020s
+detection: 398/1620 0.0130s 0.0020s
+detection: 399/1620 0.0130s 0.0020s
+detection: 400/1620 0.0130s 0.0025s
+detection: 401/1620 0.0130s 0.0030s
+detection: 402/1620 0.0125s 0.0025s
+detection: 403/1620 0.0130s 0.0030s
+detection: 404/1620 0.0125s 0.0025s
+detection: 405/1620 0.0135s 0.0025s
+detection: 406/1620 0.0130s 0.0030s
+detection: 407/1620 0.0125s 0.0025s
+detection: 408/1620 0.0125s 0.0020s
+detection: 409/1620 0.0125s 0.0020s
+detection: 410/1620 0.0135s 0.0020s
+detection: 411/1620 0.0125s 0.0025s
+detection: 412/1620 0.0130s 0.0020s
+detection: 413/1620 0.0135s 0.0020s
+detection: 414/1620 0.0125s 0.0020s
+detection: 415/1620 0.0125s 0.0025s
+detection: 416/1620 0.0125s 0.0020s
+detection: 417/1620 0.0125s 0.0020s
+detection: 418/1620 0.0125s 0.0020s
+detection: 419/1620 0.0130s 0.0020s
+detection: 420/1620 0.0130s 0.0020s
+detection: 421/1620 0.0130s 0.0025s
+detection: 422/1620 0.0130s 0.0020s
+detection: 423/1620 0.0130s 0.0020s
+detection: 424/1620 0.0135s 0.0020s
+detection: 425/1620 0.0130s 0.0025s
+detection: 426/1620 0.0130s 0.0020s
+detection: 427/1620 0.0130s 0.0020s
+detection: 428/1620 0.0125s 0.0020s
+detection: 429/1620 0.0125s 0.0035s
+detection: 430/1620 0.0130s 0.0025s
+detection: 431/1620 0.0125s 0.0025s
+detection: 432/1620 0.0135s 0.0025s
+detection: 433/1620 0.0130s 0.0020s
+detection: 434/1620 0.0130s 0.0025s
+detection: 435/1620 0.0130s 0.0020s
+detection: 436/1620 0.0130s 0.0020s
+detection: 437/1620 0.0125s 0.0020s
+detection: 438/1620 0.0125s 0.0015s
+detection: 439/1620 0.0130s 0.0020s
+detection: 440/1620 0.0130s 0.0015s
+detection: 441/1620 0.0125s 0.0020s
+detection: 442/1620 0.0130s 0.0020s
+detection: 443/1620 0.0130s 0.0020s
+detection: 444/1620 0.0130s 0.0020s
+detection: 445/1620 0.0130s 0.0025s
+detection: 446/1620 0.0125s 0.0020s
+detection: 447/1620 0.0125s 0.0020s
+detection: 448/1620 0.0130s 0.0025s
+detection: 449/1620 0.0130s 0.0025s
+detection: 450/1620 0.0130s 0.0020s
+detection: 451/1620 0.0125s 0.0020s
+detection: 452/1620 0.0130s 0.0020s
+detection: 453/1620 0.0130s 0.0020s
+detection: 454/1620 0.0135s 0.0020s
+detection: 455/1620 0.0130s 0.0025s
+detection: 456/1620 0.0130s 0.0020s
+detection: 457/1620 0.0130s 0.0020s
+detection: 458/1620 0.0130s 0.0020s
+detection: 459/1620 0.0135s 0.0025s
+detection: 460/1620 0.0130s 0.0030s
+detection: 461/1620 0.0125s 0.0030s
+detection: 462/1620 0.0130s 0.0020s
+detection: 463/1620 0.0130s 0.0020s
+detection: 464/1620 0.0135s 0.0020s
+detection: 465/1620 0.0130s 0.0025s
+detection: 466/1620 0.0130s 0.0025s
+detection: 467/1620 0.0125s 0.0020s
+detection: 468/1620 0.0125s 0.0020s
+detection: 469/1620 0.0125s 0.0020s
+detection: 470/1620 0.0130s 0.0025s
+detection: 471/1620 0.0125s 0.0025s
+detection: 472/1620 0.0135s 0.0020s
+detection: 473/1620 0.0130s 0.0020s
+detection: 474/1620 0.0130s 0.0025s
+detection: 475/1620 0.0125s 0.0020s
+detection: 476/1620 0.0130s 0.0020s
+detection: 477/1620 0.0130s 0.0020s
+detection: 478/1620 0.0125s 0.0020s
+detection: 479/1620 0.0125s 0.0020s
+detection: 480/1620 0.0135s 0.0020s
+detection: 481/1620 0.0125s 0.0020s
+detection: 482/1620 0.0130s 0.0020s
+detection: 483/1620 0.0130s 0.0020s
+detection: 484/1620 0.0130s 0.0020s
+detection: 485/1620 0.0130s 0.0025s
+detection: 486/1620 0.0125s 0.0020s
+detection: 487/1620 0.0125s 0.0020s
+detection: 488/1620 0.0125s 0.0020s
+detection: 489/1620 0.0130s 0.0020s
+detection: 490/1620 0.0135s 0.0020s
+detection: 491/1620 0.0130s 0.0035s
+detection: 492/1620 0.0130s 0.0025s
+detection: 493/1620 0.0130s 0.0020s
+detection: 494/1620 0.0130s 0.0020s
+detection: 495/1620 0.0130s 0.0020s
+detection: 496/1620 0.0125s 0.0025s
+detection: 497/1620 0.0135s 0.0020s
+detection: 498/1620 0.0130s 0.0020s
+detection: 499/1620 0.0130s 0.0025s
+detection: 500/1620 0.0130s 0.0020s
+detection: 501/1620 0.0125s 0.0020s
+detection: 502/1620 0.0135s 0.0020s
+detection: 503/1620 0.0125s 0.0025s
+detection: 504/1620 0.0130s 0.0025s
+detection: 505/1620 0.0130s 0.0020s
+detection: 506/1620 0.0130s 0.0025s
+detection: 507/1620 0.0135s 0.0020s
+detection: 508/1620 0.0130s 0.0020s
+detection: 509/1620 0.0125s 0.0020s
+detection: 510/1620 0.0125s 0.0020s
+detection: 511/1620 0.0130s 0.0025s
+detection: 512/1620 0.0130s 0.0020s
+detection: 513/1620 0.0125s 0.0020s
+detection: 514/1620 0.0125s 0.0025s
+detection: 515/1620 0.0130s 0.0025s
+detection: 516/1620 0.0125s 0.0025s
+detection: 517/1620 0.0130s 0.0025s
+detection: 518/1620 0.0130s 0.0020s
+detection: 519/1620 0.0130s 0.0020s
+detection: 520/1620 0.0130s 0.0025s
+detection: 521/1620 0.0130s 0.0020s
+detection: 522/1620 0.0130s 0.0020s
+detection: 523/1620 0.0125s 0.0020s
+detection: 524/1620 0.0125s 0.0020s
+detection: 525/1620 0.0130s 0.0020s
+detection: 526/1620 0.0130s 0.0020s
+detection: 527/1620 0.0130s 0.0025s
+detection: 528/1620 0.0130s 0.0020s
+detection: 529/1620 0.0130s 0.0025s
+detection: 530/1620 0.0130s 0.0025s
+detection: 531/1620 0.0125s 0.0020s
+detection: 532/1620 0.0125s 0.0020s
+detection: 533/1620 0.0135s 0.0020s
+detection: 534/1620 0.0130s 0.0020s
+detection: 535/1620 0.0135s 0.0020s
+detection: 536/1620 0.0130s 0.0020s
+detection: 537/1620 0.0125s 0.0020s
+detection: 538/1620 0.0130s 0.0025s
+detection: 539/1620 0.0130s 0.0020s
+detection: 540/1620 0.0135s 0.0020s
+detection: 541/1620 0.0125s 0.0025s
+detection: 542/1620 0.0125s 0.0020s
+detection: 543/1620 0.0125s 0.0020s
+detection: 544/1620 0.0125s 0.0020s
+detection: 545/1620 0.0130s 0.0020s
+detection: 546/1620 0.0130s 0.0020s
+detection: 547/1620 0.0125s 0.0020s
+detection: 548/1620 0.0130s 0.0020s
+detection: 549/1620 0.0130s 0.0020s
+detection: 550/1620 0.0135s 0.0020s
+detection: 551/1620 0.0130s 0.0025s
+detection: 552/1620 0.0130s 0.0020s
+detection: 553/1620 0.0125s 0.0015s
+detection: 554/1620 0.0125s 0.0020s
+detection: 555/1620 0.0135s 0.0020s
+detection: 556/1620 0.0130s 0.0020s
+detection: 557/1620 0.0130s 0.0020s
+detection: 558/1620 0.0125s 0.0020s
+detection: 559/1620 0.0125s 0.0025s
+detection: 560/1620 0.0130s 0.0020s
+detection: 561/1620 0.0130s 0.0020s
+detection: 562/1620 0.0130s 0.0020s
+detection: 563/1620 0.0130s 0.0025s
+detection: 564/1620 0.0125s 0.0020s
+detection: 565/1620 0.0125s 0.0020s
+detection: 566/1620 0.0130s 0.0020s
+detection: 567/1620 0.0125s 0.0020s
+detection: 568/1620 0.0130s 0.0020s
+detection: 569/1620 0.0130s 0.0020s
+detection: 570/1620 0.0130s 0.0020s
+detection: 571/1620 0.0130s 0.0025s
+detection: 572/1620 0.0125s 0.0020s
+detection: 573/1620 0.0125s 0.0025s
+detection: 574/1620 0.0125s 0.0030s
+detection: 575/1620 0.0130s 0.0020s
+detection: 576/1620 0.0125s 0.0020s
+detection: 577/1620 0.0125s 0.0025s
+detection: 578/1620 0.0130s 0.0025s
+detection: 579/1620 0.0130s 0.0025s
+detection: 580/1620 0.0130s 0.0025s
+detection: 581/1620 0.0135s 0.0025s
+detection: 582/1620 0.0125s 0.0020s
+detection: 583/1620 0.0130s 0.0025s
+detection: 584/1620 0.0135s 0.0020s
+detection: 585/1620 0.0130s 0.0020s
+detection: 586/1620 0.0130s 0.0020s
+detection: 587/1620 0.0125s 0.0020s
+detection: 588/1620 0.0125s 0.0015s
+detection: 589/1620 0.0125s 0.0030s
+detection: 590/1620 0.0130s 0.0020s
+detection: 591/1620 0.0125s 0.0020s
+detection: 592/1620 0.0125s 0.0025s
+detection: 593/1620 0.0130s 0.0020s
+detection: 594/1620 0.0125s 0.0020s
+detection: 595/1620 0.0130s 0.0025s
+detection: 596/1620 0.0125s 0.0025s
+detection: 597/1620 0.0125s 0.0020s
+detection: 598/1620 0.0125s 0.0020s
+detection: 599/1620 0.0130s 0.0025s
+detection: 600/1620 0.0130s 0.0020s
+detection: 601/1620 0.0125s 0.0025s
+detection: 602/1620 0.0130s 0.0020s
+detection: 603/1620 0.0135s 0.0025s
+detection: 604/1620 0.0125s 0.0020s
+detection: 605/1620 0.0125s 0.0020s
+detection: 606/1620 0.0130s 0.0030s
+detection: 607/1620 0.0125s 0.0020s
+detection: 608/1620 0.0130s 0.0030s
+detection: 609/1620 0.0125s 0.0020s
+detection: 610/1620 0.0125s 0.0025s
+detection: 611/1620 0.0130s 0.0020s
+detection: 612/1620 0.0130s 0.0035s
+detection: 613/1620 0.0130s 0.0030s
+detection: 614/1620 0.0130s 0.0020s
+detection: 615/1620 0.0125s 0.0030s
+detection: 616/1620 0.0130s 0.0020s
+detection: 617/1620 0.0125s 0.0020s
+detection: 618/1620 0.0125s 0.0020s
+detection: 619/1620 0.0130s 0.0020s
+detection: 620/1620 0.0125s 0.0020s
+detection: 621/1620 0.0130s 0.0020s
+detection: 622/1620 0.0135s 0.0025s
+detection: 623/1620 0.0130s 0.0020s
+detection: 624/1620 0.0125s 0.0020s
+detection: 625/1620 0.0130s 0.0020s
+detection: 626/1620 0.0130s 0.0020s
+detection: 627/1620 0.0130s 0.0020s
+detection: 628/1620 0.0125s 0.0020s
+detection: 629/1620 0.0125s 0.0020s
+detection: 630/1620 0.0130s 0.0020s
+detection: 631/1620 0.0135s 0.0025s
+detection: 632/1620 0.0125s 0.0025s
+detection: 633/1620 0.0125s 0.0025s
+detection: 634/1620 0.0125s 0.0020s
+detection: 635/1620 0.0125s 0.0020s
+detection: 636/1620 0.0125s 0.0025s
+detection: 637/1620 0.0130s 0.0020s
+detection: 638/1620 0.0130s 0.0020s
+detection: 639/1620 0.0130s 0.0025s
+detection: 640/1620 0.0130s 0.0020s
+detection: 641/1620 0.0130s 0.0020s
+detection: 642/1620 0.0125s 0.0020s
+detection: 643/1620 0.0130s 0.0025s
+detection: 644/1620 0.0130s 0.0025s
+detection: 645/1620 0.0130s 0.0020s
+detection: 646/1620 0.0135s 0.0020s
+detection: 647/1620 0.0125s 0.0020s
+detection: 648/1620 0.0125s 0.0030s
+detection: 649/1620 0.0125s 0.0020s
+detection: 650/1620 0.0125s 0.0020s
+detection: 651/1620 0.0125s 0.0020s
+detection: 652/1620 0.0125s 0.0020s
+detection: 653/1620 0.0125s 0.0020s
+detection: 654/1620 0.0130s 0.0015s
+detection: 655/1620 0.0125s 0.0020s
+detection: 656/1620 0.0130s 0.0020s
+detection: 657/1620 0.0130s 0.0020s
+detection: 658/1620 0.0130s 0.0020s
+detection: 659/1620 0.0130s 0.0020s
+detection: 660/1620 0.0125s 0.0020s
+detection: 661/1620 0.0135s 0.0020s
+detection: 662/1620 0.0125s 0.0020s
+detection: 663/1620 0.0135s 0.0025s
+detection: 664/1620 0.0130s 0.0025s
+detection: 665/1620 0.0130s 0.0025s
+detection: 666/1620 0.0130s 0.0025s
+detection: 667/1620 0.0130s 0.0020s
+detection: 668/1620 0.0130s 0.0020s
+detection: 669/1620 0.0135s 0.0020s
+detection: 670/1620 0.0130s 0.0020s
+detection: 671/1620 0.0125s 0.0020s
+detection: 672/1620 0.0130s 0.0020s
+detection: 673/1620 0.0125s 0.0020s
+detection: 674/1620 0.0130s 0.0020s
+detection: 675/1620 0.0130s 0.0025s
+detection: 676/1620 0.0130s 0.0025s
+detection: 677/1620 0.0135s 0.0020s
+detection: 678/1620 0.0130s 0.0020s
+detection: 679/1620 0.0130s 0.0020s
+detection: 680/1620 0.0125s 0.0020s
+detection: 681/1620 0.0130s 0.0020s
+detection: 682/1620 0.0130s 0.0020s
+detection: 683/1620 0.0125s 0.0020s
+detection: 684/1620 0.0130s 0.0020s
+detection: 685/1620 0.0130s 0.0025s
+detection: 686/1620 0.0125s 0.0020s
+detection: 687/1620 0.0135s 0.0020s
+detection: 688/1620 0.0125s 0.0020s
+detection: 689/1620 0.0130s 0.0020s
+detection: 690/1620 0.0130s 0.0020s
+detection: 691/1620 0.0125s 0.0020s
+detection: 692/1620 0.0125s 0.0020s
+detection: 693/1620 0.0130s 0.0020s
+detection: 694/1620 0.0130s 0.0020s
+detection: 695/1620 0.0125s 0.0020s
+detection: 696/1620 0.0125s 0.0020s
+detection: 697/1620 0.0135s 0.0025s
+detection: 698/1620 0.0130s 0.0020s
+detection: 699/1620 0.0135s 0.0020s
+detection: 700/1620 0.0125s 0.0025s
+detection: 701/1620 0.0130s 0.0020s
+detection: 702/1620 0.0130s 0.0025s
+detection: 703/1620 0.0130s 0.0020s
+detection: 704/1620 0.0135s 0.0020s
+detection: 705/1620 0.0130s 0.0020s
+detection: 706/1620 0.0130s 0.0025s
+detection: 707/1620 0.0125s 0.0025s
+detection: 708/1620 0.0125s 0.0020s
+detection: 709/1620 0.0130s 0.0020s
+detection: 710/1620 0.0125s 0.0020s
+detection: 711/1620 0.0130s 0.0025s
+detection: 712/1620 0.0135s 0.0025s
+detection: 713/1620 0.0130s 0.0025s
+detection: 714/1620 0.0130s 0.0020s
+detection: 715/1620 0.0125s 0.0020s
+detection: 716/1620 0.0130s 0.0020s
+detection: 717/1620 0.0125s 0.0015s
+detection: 718/1620 0.0130s 0.0025s
+detection: 719/1620 0.0130s 0.0020s
+detection: 720/1620 0.0125s 0.0025s
+detection: 721/1620 0.0130s 0.0025s
+detection: 722/1620 0.0135s 0.0020s
+detection: 723/1620 0.0125s 0.0020s
+detection: 724/1620 0.0130s 0.0020s
+detection: 725/1620 0.0125s 0.0020s
+detection: 726/1620 0.0125s 0.0020s
+detection: 727/1620 0.0125s 0.0025s
+detection: 728/1620 0.0125s 0.0020s
+detection: 729/1620 0.0130s 0.0020s
+detection: 730/1620 0.0130s 0.0020s
+detection: 731/1620 0.0130s 0.0020s
+detection: 732/1620 0.0130s 0.0020s
+detection: 733/1620 0.0130s 0.0025s
+detection: 734/1620 0.0125s 0.0020s
+detection: 735/1620 0.0125s 0.0025s
+detection: 736/1620 0.0125s 0.0020s
+detection: 737/1620 0.0125s 0.0020s
+detection: 738/1620 0.0130s 0.0020s
+detection: 739/1620 0.0130s 0.0020s
+detection: 740/1620 0.0135s 0.0020s
+detection: 741/1620 0.0125s 0.0020s
+detection: 742/1620 0.0135s 0.0020s
+detection: 743/1620 0.0130s 0.0020s
+detection: 744/1620 0.0125s 0.0020s
+detection: 745/1620 0.0125s 0.0020s
+detection: 746/1620 0.0125s 0.0020s
+detection: 747/1620 0.0130s 0.0025s
+detection: 748/1620 0.0125s 0.0025s
+detection: 749/1620 0.0130s 0.0025s
+detection: 750/1620 0.0130s 0.0030s
+detection: 751/1620 0.0130s 0.0020s
+detection: 752/1620 0.0125s 0.0020s
+detection: 753/1620 0.0130s 0.0015s
+detection: 754/1620 0.0130s 0.0020s
+detection: 755/1620 0.0125s 0.0020s
+detection: 756/1620 0.0125s 0.0020s
+detection: 757/1620 0.0125s 0.0020s
+detection: 758/1620 0.0130s 0.0020s
+detection: 759/1620 0.0130s 0.0020s
+detection: 760/1620 0.0140s 0.0020s
+detection: 761/1620 0.0130s 0.0020s
+detection: 762/1620 0.0125s 0.0020s
+detection: 763/1620 0.0130s 0.0020s
+detection: 764/1620 0.0125s 0.0020s
+detection: 765/1620 0.0135s 0.0020s
+detection: 766/1620 0.0130s 0.0020s
+detection: 767/1620 0.0130s 0.0020s
+detection: 768/1620 0.0125s 0.0020s
+detection: 769/1620 0.0135s 0.0020s
+detection: 770/1620 0.0125s 0.0025s
+detection: 771/1620 0.0130s 0.0020s
+detection: 772/1620 0.0135s 0.0025s
+detection: 773/1620 0.0130s 0.0020s
+detection: 774/1620 0.0125s 0.0020s
+detection: 775/1620 0.0130s 0.0020s
+detection: 776/1620 0.0130s 0.0025s
+detection: 777/1620 0.0135s 0.0020s
+detection: 778/1620 0.0125s 0.0025s
+detection: 779/1620 0.0130s 0.0045s
+detection: 780/1620 0.0125s 0.0025s
+detection: 781/1620 0.0130s 0.0020s
+detection: 782/1620 0.0130s 0.0020s
+detection: 783/1620 0.0125s 0.0020s
+detection: 784/1620 0.0125s 0.0020s
+detection: 785/1620 0.0125s 0.0020s
+detection: 786/1620 0.0130s 0.0020s
+detection: 787/1620 0.0125s 0.0020s
+detection: 788/1620 0.0130s 0.0020s
+detection: 789/1620 0.0125s 0.0020s
+detection: 790/1620 0.0130s 0.0020s
+detection: 791/1620 0.0130s 0.0020s
+detection: 792/1620 0.0130s 0.0020s
+detection: 793/1620 0.0130s 0.0020s
+detection: 794/1620 0.0130s 0.0020s
+detection: 795/1620 0.0130s 0.0015s
+detection: 796/1620 0.0125s 0.0020s
+detection: 797/1620 0.0130s 0.0020s
+detection: 798/1620 0.0130s 0.0020s
+detection: 799/1620 0.0125s 0.0015s
+detection: 800/1620 0.0130s 0.0020s
+detection: 801/1620 0.0130s 0.0020s
+detection: 802/1620 0.0130s 0.0020s
+detection: 803/1620 0.0130s 0.0020s
+detection: 804/1620 0.0130s 0.0020s
+detection: 805/1620 0.0125s 0.0020s
+detection: 806/1620 0.0130s 0.0020s
+detection: 807/1620 0.0130s 0.0020s
+detection: 808/1620 0.0130s 0.0020s
+detection: 809/1620 0.0125s 0.0020s
+detection: 810/1620 0.0125s 0.0020s
+detection: 811/1620 0.0125s 0.0020s
+detection: 812/1620 0.0130s 0.0020s
+detection: 813/1620 0.0125s 0.0025s
+detection: 814/1620 0.0130s 0.0025s
+detection: 815/1620 0.0130s 0.0020s
+detection: 816/1620 0.0130s 0.0020s
+detection: 817/1620 0.0125s 0.0020s
+detection: 818/1620 0.0130s 0.0025s
+detection: 819/1620 0.0130s 0.0020s
+detection: 820/1620 0.0130s 0.0020s
+detection: 821/1620 0.0125s 0.0025s
+detection: 822/1620 0.0130s 0.0020s
+detection: 823/1620 0.0130s 0.0020s
+detection: 824/1620 0.0130s 0.0020s
+detection: 825/1620 0.0125s 0.0025s
+detection: 826/1620 0.0130s 0.0020s
+detection: 827/1620 0.0125s 0.0025s
+detection: 828/1620 0.0125s 0.0025s
+detection: 829/1620 0.0130s 0.0025s
+detection: 830/1620 0.0130s 0.0020s
+detection: 831/1620 0.0130s 0.0025s
+detection: 832/1620 0.0130s 0.0025s
+detection: 833/1620 0.0135s 0.0020s
+detection: 834/1620 0.0125s 0.0025s
+detection: 835/1620 0.0125s 0.0020s
+detection: 836/1620 0.0130s 0.0020s
+detection: 837/1620 0.0130s 0.0020s
+detection: 838/1620 0.0135s 0.0020s
+detection: 839/1620 0.0130s 0.0020s
+detection: 840/1620 0.0125s 0.0020s
+detection: 841/1620 0.0125s 0.0025s
+detection: 842/1620 0.0125s 0.0020s
+detection: 843/1620 0.0135s 0.0020s
+detection: 844/1620 0.0125s 0.0025s
+detection: 845/1620 0.0130s 0.0030s
+detection: 846/1620 0.0130s 0.0030s
+detection: 847/1620 0.0125s 0.0025s
+detection: 848/1620 0.0125s 0.0020s
+detection: 849/1620 0.0130s 0.0020s
+detection: 850/1620 0.0135s 0.0020s
+detection: 851/1620 0.0130s 0.0025s
+detection: 852/1620 0.0130s 0.0025s
+detection: 853/1620 0.0130s 0.0025s
+detection: 854/1620 0.0130s 0.0020s
+detection: 855/1620 0.0130s 0.0025s
+detection: 856/1620 0.0130s 0.0020s
+detection: 857/1620 0.0125s 0.0020s
+detection: 858/1620 0.0130s 0.0040s
+detection: 859/1620 0.0125s 0.0030s
+detection: 860/1620 0.0130s 0.0030s
+detection: 861/1620 0.0125s 0.0020s
+detection: 862/1620 0.0135s 0.0020s
+detection: 863/1620 0.0125s 0.0025s
+detection: 864/1620 0.0135s 0.0025s
+detection: 865/1620 0.0125s 0.0030s
+detection: 866/1620 0.0130s 0.0025s
+detection: 867/1620 0.0125s 0.0030s
+detection: 868/1620 0.0125s 0.0025s
+detection: 869/1620 0.0130s 0.0020s
+detection: 870/1620 0.0125s 0.0020s
+detection: 871/1620 0.0130s 0.0020s
+detection: 872/1620 0.0130s 0.0020s
+detection: 873/1620 0.0130s 0.0020s
+detection: 874/1620 0.0125s 0.0030s
+detection: 875/1620 0.0130s 0.0025s
+detection: 876/1620 0.0130s 0.0025s
+detection: 877/1620 0.0125s 0.0025s
+detection: 878/1620 0.0125s 0.0020s
+detection: 879/1620 0.0125s 0.0020s
+detection: 880/1620 0.0125s 0.0025s
+detection: 881/1620 0.0135s 0.0020s
+detection: 882/1620 0.0125s 0.0020s
+detection: 883/1620 0.0125s 0.0025s
+detection: 884/1620 0.0130s 0.0020s
+detection: 885/1620 0.0125s 0.0020s
+detection: 886/1620 0.0135s 0.0020s
+detection: 887/1620 0.0130s 0.0020s
+detection: 888/1620 0.0125s 0.0025s
+detection: 889/1620 0.0130s 0.0025s
+detection: 890/1620 0.0125s 0.0020s
+detection: 891/1620 0.0130s 0.0015s
+detection: 892/1620 0.0130s 0.0020s
+detection: 893/1620 0.0125s 0.0025s
+detection: 894/1620 0.0125s 0.0020s
+detection: 895/1620 0.0130s 0.0025s
+detection: 896/1620 0.0130s 0.0020s
+detection: 897/1620 0.0130s 0.0020s
+detection: 898/1620 0.0125s 0.0020s
+detection: 899/1620 0.0125s 0.0025s
+detection: 900/1620 0.0125s 0.0020s
+detection: 901/1620 0.0130s 0.0020s
+detection: 902/1620 0.0130s 0.0020s
+detection: 903/1620 0.0130s 0.0020s
+detection: 904/1620 0.0130s 0.0025s
+detection: 905/1620 0.0130s 0.0025s
+detection: 906/1620 0.0130s 0.0020s
+detection: 907/1620 0.0125s 0.0020s
+detection: 908/1620 0.0135s 0.0020s
+detection: 909/1620 0.0125s 0.0020s
+detection: 910/1620 0.0130s 0.0030s
+detection: 911/1620 0.0125s 0.0020s
+detection: 912/1620 0.0130s 0.0020s
+detection: 913/1620 0.0130s 0.0020s
+detection: 914/1620 0.0125s 0.0020s
+detection: 915/1620 0.0130s 0.0020s
+detection: 916/1620 0.0125s 0.0025s
+detection: 917/1620 0.0130s 0.0020s
+detection: 918/1620 0.0130s 0.0020s
+detection: 919/1620 0.0130s 0.0025s
+detection: 920/1620 0.0125s 0.0025s
+detection: 921/1620 0.0125s 0.0030s
+detection: 922/1620 0.0130s 0.0020s
+detection: 923/1620 0.0125s 0.0020s
+detection: 924/1620 0.0140s 0.0020s
+detection: 925/1620 0.0125s 0.0025s
+detection: 926/1620 0.0130s 0.0020s
+detection: 927/1620 0.0125s 0.0020s
+detection: 928/1620 0.0135s 0.0020s
+detection: 929/1620 0.0130s 0.0020s
+detection: 930/1620 0.0125s 0.0025s
+detection: 931/1620 0.0130s 0.0020s
+detection: 932/1620 0.0130s 0.0020s
+detection: 933/1620 0.0130s 0.0020s
+detection: 934/1620 0.0125s 0.0025s
+detection: 935/1620 0.0130s 0.0020s
+detection: 936/1620 0.0125s 0.0020s
+detection: 937/1620 0.0125s 0.0020s
+detection: 938/1620 0.0125s 0.0020s
+detection: 939/1620 0.0130s 0.0020s
+detection: 940/1620 0.0130s 0.0020s
+detection: 941/1620 0.0125s 0.0020s
+detection: 942/1620 0.0125s 0.0025s
+detection: 943/1620 0.0130s 0.0020s
+detection: 944/1620 0.0125s 0.0020s
+detection: 945/1620 0.0130s 0.0020s
+detection: 946/1620 0.0130s 0.0020s
+detection: 947/1620 0.0130s 0.0025s
+detection: 948/1620 0.0130s 0.0020s
+detection: 949/1620 0.0130s 0.0025s
+detection: 950/1620 0.0125s 0.0020s
+detection: 951/1620 0.0130s 0.0030s
+detection: 952/1620 0.0125s 0.0020s
+detection: 953/1620 0.0125s 0.0015s
+detection: 954/1620 0.0130s 0.0020s
+detection: 955/1620 0.0130s 0.0025s
+detection: 956/1620 0.0130s 0.0020s
+detection: 957/1620 0.0125s 0.0020s
+detection: 958/1620 0.0130s 0.0020s
+detection: 959/1620 0.0165s 0.0020s
+detection: 960/1620 0.0130s 0.0020s
+detection: 961/1620 0.0125s 0.0025s
+detection: 962/1620 0.0130s 0.0020s
+detection: 963/1620 0.0125s 0.0020s
+detection: 964/1620 0.0130s 0.0025s
+detection: 965/1620 0.0130s 0.0020s
+detection: 966/1620 0.0130s 0.0020s
+detection: 967/1620 0.0130s 0.0020s
+detection: 968/1620 0.0125s 0.0025s
+detection: 969/1620 0.0130s 0.0020s
+detection: 970/1620 0.0125s 0.0020s
+detection: 971/1620 0.0130s 0.0020s
+detection: 972/1620 0.0125s 0.0020s
+detection: 973/1620 0.0130s 0.0020s
+detection: 974/1620 0.0125s 0.0020s
+detection: 975/1620 0.0125s 0.0020s
+detection: 976/1620 0.0135s 0.0020s
+detection: 977/1620 0.0125s 0.0015s
+detection: 978/1620 0.0125s 0.0020s
+detection: 979/1620 0.0130s 0.0020s
+detection: 980/1620 0.0130s 0.0020s
+detection: 981/1620 0.0135s 0.0025s
+detection: 982/1620 0.0130s 0.0020s
+detection: 983/1620 0.0135s 0.0020s
+detection: 984/1620 0.0135s 0.0020s
+detection: 985/1620 0.0130s 0.0020s
+detection: 986/1620 0.0125s 0.0020s
+detection: 987/1620 0.0125s 0.0025s
+detection: 988/1620 0.0130s 0.0020s
+detection: 989/1620 0.0125s 0.0015s
+detection: 990/1620 0.0130s 0.0030s
+detection: 991/1620 0.0130s 0.0020s
+detection: 992/1620 0.0130s 0.0020s
+detection: 993/1620 0.0125s 0.0025s
+detection: 994/1620 0.0130s 0.0020s
+detection: 995/1620 0.0125s 0.0025s
+detection: 996/1620 0.0135s 0.0020s
+detection: 997/1620 0.0125s 0.0020s
+detection: 998/1620 0.0135s 0.0020s
+detection: 999/1620 0.0125s 0.0035s
+detection: 1000/1620 0.0130s 0.0020s
+detection: 1001/1620 0.0125s 0.0020s
+detection: 1002/1620 0.0135s 0.0020s
+detection: 1003/1620 0.0130s 0.0020s
+detection: 1004/1620 0.0130s 0.0020s
+detection: 1005/1620 0.0130s 0.0020s
+detection: 1006/1620 0.0130s 0.0020s
+detection: 1007/1620 0.0125s 0.0025s
+detection: 1008/1620 0.0125s 0.0025s
+detection: 1009/1620 0.0125s 0.0020s
+detection: 1010/1620 0.0125s 0.0020s
+detection: 1011/1620 0.0130s 0.0025s
+detection: 1012/1620 0.0125s 0.0020s
+detection: 1013/1620 0.0130s 0.0025s
+detection: 1014/1620 0.0125s 0.0030s
+detection: 1015/1620 0.0130s 0.0020s
+detection: 1016/1620 0.0130s 0.0020s
+detection: 1017/1620 0.0130s 0.0020s
+detection: 1018/1620 0.0130s 0.0020s
+detection: 1019/1620 0.0125s 0.0025s
+detection: 1020/1620 0.0135s 0.0020s
+detection: 1021/1620 0.0125s 0.0025s
+detection: 1022/1620 0.0125s 0.0020s
+detection: 1023/1620 0.0130s 0.0025s
+detection: 1024/1620 0.0125s 0.0020s
+detection: 1025/1620 0.0125s 0.0020s
+detection: 1026/1620 0.0130s 0.0020s
+detection: 1027/1620 0.0125s 0.0020s
+detection: 1028/1620 0.0125s 0.0020s
+detection: 1029/1620 0.0130s 0.0020s
+detection: 1030/1620 0.0130s 0.0020s
+detection: 1031/1620 0.0125s 0.0020s
+detection: 1032/1620 0.0125s 0.0025s
+detection: 1033/1620 0.0125s 0.0020s
+detection: 1034/1620 0.0135s 0.0020s
+detection: 1035/1620 0.0130s 0.0020s
+detection: 1036/1620 0.0130s 0.0020s
+detection: 1037/1620 0.0125s 0.0020s
+detection: 1038/1620 0.0130s 0.0020s
+detection: 1039/1620 0.0130s 0.0020s
+detection: 1040/1620 0.0130s 0.0020s
+detection: 1041/1620 0.0125s 0.0020s
+detection: 1042/1620 0.0125s 0.0025s
+detection: 1043/1620 0.0125s 0.0025s
+detection: 1044/1620 0.0130s 0.0025s
+detection: 1045/1620 0.0125s 0.0020s
+detection: 1046/1620 0.0130s 0.0020s
+detection: 1047/1620 0.0125s 0.0020s
+detection: 1048/1620 0.0130s 0.0020s
+detection: 1049/1620 0.0125s 0.0020s
+detection: 1050/1620 0.0125s 0.0020s
+detection: 1051/1620 0.0125s 0.0020s
+detection: 1052/1620 0.0135s 0.0025s
+detection: 1053/1620 0.0130s 0.0020s
+detection: 1054/1620 0.0125s 0.0025s
+detection: 1055/1620 0.0125s 0.0020s
+detection: 1056/1620 0.0125s 0.0020s
+detection: 1057/1620 0.0135s 0.0020s
+detection: 1058/1620 0.0125s 0.0030s
+detection: 1059/1620 0.0130s 0.0020s
+detection: 1060/1620 0.0130s 0.0025s
+detection: 1061/1620 0.0125s 0.0030s
+detection: 1062/1620 0.0135s 0.0020s
+detection: 1063/1620 0.0125s 0.0025s
+detection: 1064/1620 0.0130s 0.0020s
+detection: 1065/1620 0.0135s 0.0030s
+detection: 1066/1620 0.0130s 0.0020s
+detection: 1067/1620 0.0135s 0.0020s
+detection: 1068/1620 0.0125s 0.0030s
+detection: 1069/1620 0.0125s 0.0020s
+detection: 1070/1620 0.0135s 0.0030s
+detection: 1071/1620 0.0130s 0.0020s
+detection: 1072/1620 0.0125s 0.0020s
+detection: 1073/1620 0.0135s 0.0030s
+detection: 1074/1620 0.0125s 0.0020s
+detection: 1075/1620 0.0130s 0.0020s
+detection: 1076/1620 0.0130s 0.0035s
+detection: 1077/1620 0.0125s 0.0025s
+detection: 1078/1620 0.0130s 0.0020s
+detection: 1079/1620 0.0125s 0.0025s
+detection: 1080/1620 0.0125s 0.0020s
+detection: 1081/1620 0.0135s 0.0020s
+detection: 1082/1620 0.0125s 0.0035s
+detection: 1083/1620 0.0125s 0.0020s
+detection: 1084/1620 0.0135s 0.0020s
+detection: 1085/1620 0.0130s 0.0020s
+detection: 1086/1620 0.0125s 0.0050s
+detection: 1087/1620 0.0130s 0.0020s
+detection: 1088/1620 0.0130s 0.0020s
+detection: 1089/1620 0.0125s 0.0020s
+detection: 1090/1620 0.0125s 0.0020s
+detection: 1091/1620 0.0130s 0.0025s
+detection: 1092/1620 0.0125s 0.0030s
+detection: 1093/1620 0.0135s 0.0020s
+detection: 1094/1620 0.0125s 0.0030s
+detection: 1095/1620 0.0125s 0.0020s
+detection: 1096/1620 0.0135s 0.0025s
+detection: 1097/1620 0.0130s 0.0040s
+detection: 1098/1620 0.0125s 0.0030s
+detection: 1099/1620 0.0130s 0.0020s
+detection: 1100/1620 0.0130s 0.0020s
+detection: 1101/1620 0.0130s 0.0025s
+detection: 1102/1620 0.0130s 0.0025s
+detection: 1103/1620 0.0125s 0.0020s
+detection: 1104/1620 0.0130s 0.0020s
+detection: 1105/1620 0.0130s 0.0020s
+detection: 1106/1620 0.0130s 0.0020s
+detection: 1107/1620 0.0125s 0.0025s
+detection: 1108/1620 0.0125s 0.0020s
+detection: 1109/1620 0.0130s 0.0020s
+detection: 1110/1620 0.0130s 0.0025s
+detection: 1111/1620 0.0130s 0.0020s
+detection: 1112/1620 0.0130s 0.0030s
+detection: 1113/1620 0.0125s 0.0025s
+detection: 1114/1620 0.0125s 0.0020s
+detection: 1115/1620 0.0130s 0.0030s
+detection: 1116/1620 0.0125s 0.0025s
+detection: 1117/1620 0.0130s 0.0020s
+detection: 1118/1620 0.0125s 0.0030s
+detection: 1119/1620 0.0125s 0.0020s
+detection: 1120/1620 0.0130s 0.0020s
+detection: 1121/1620 0.0130s 0.0020s
+detection: 1122/1620 0.0130s 0.0025s
+detection: 1123/1620 0.0130s 0.0020s
+detection: 1124/1620 0.0130s 0.0020s
+detection: 1125/1620 0.0130s 0.0020s
+detection: 1126/1620 0.0125s 0.0025s
+detection: 1127/1620 0.0130s 0.0020s
+detection: 1128/1620 0.0125s 0.0020s
+detection: 1129/1620 0.0130s 0.0020s
+detection: 1130/1620 0.0135s 0.0030s
+detection: 1131/1620 0.0130s 0.0020s
+detection: 1132/1620 0.0125s 0.0020s
+detection: 1133/1620 0.0125s 0.0020s
+detection: 1134/1620 0.0125s 0.0025s
+detection: 1135/1620 0.0135s 0.0025s
+detection: 1136/1620 0.0130s 0.0030s
+detection: 1137/1620 0.0130s 0.0020s
+detection: 1138/1620 0.0130s 0.0030s
+detection: 1139/1620 0.0130s 0.0020s
+detection: 1140/1620 0.0125s 0.0025s
+detection: 1141/1620 0.0130s 0.0020s
+detection: 1142/1620 0.0125s 0.0020s
+detection: 1143/1620 0.0130s 0.0020s
+detection: 1144/1620 0.0130s 0.0020s
+detection: 1145/1620 0.0130s 0.0020s
+detection: 1146/1620 0.0135s 0.0025s
+detection: 1147/1620 0.0130s 0.0035s
+detection: 1148/1620 0.0125s 0.0020s
+detection: 1149/1620 0.0135s 0.0025s
+detection: 1150/1620 0.0130s 0.0020s
+detection: 1151/1620 0.0125s 0.0020s
+detection: 1152/1620 0.0135s 0.0020s
+detection: 1153/1620 0.0125s 0.0020s
+detection: 1154/1620 0.0130s 0.0020s
+detection: 1155/1620 0.0125s 0.0020s
+detection: 1156/1620 0.0125s 0.0020s
+detection: 1157/1620 0.0130s 0.0025s
+detection: 1158/1620 0.0130s 0.0020s
+detection: 1159/1620 0.0130s 0.0025s
+detection: 1160/1620 0.0125s 0.0020s
+detection: 1161/1620 0.0135s 0.0025s
+detection: 1162/1620 0.0130s 0.0025s
+detection: 1163/1620 0.0130s 0.0020s
+detection: 1164/1620 0.0130s 0.0020s
+detection: 1165/1620 0.0130s 0.0025s
+detection: 1166/1620 0.0130s 0.0025s
+detection: 1167/1620 0.0130s 0.0025s
+detection: 1168/1620 0.0130s 0.0020s
+detection: 1169/1620 0.0130s 0.0030s
+detection: 1170/1620 0.0130s 0.0020s
+detection: 1171/1620 0.0145s 0.0025s
+detection: 1172/1620 0.0125s 0.0025s
+detection: 1173/1620 0.0125s 0.0020s
+detection: 1174/1620 0.0130s 0.0025s
+detection: 1175/1620 0.0125s 0.0030s
+detection: 1176/1620 0.0130s 0.0025s
+detection: 1177/1620 0.0130s 0.0025s
+detection: 1178/1620 0.0130s 0.0025s
+detection: 1179/1620 0.0130s 0.0020s
+detection: 1180/1620 0.0125s 0.0020s
+detection: 1181/1620 0.0130s 0.0020s
+detection: 1182/1620 0.0125s 0.0020s
+detection: 1183/1620 0.0125s 0.0020s
+detection: 1184/1620 0.0135s 0.0020s
+detection: 1185/1620 0.0125s 0.0020s
+detection: 1186/1620 0.0130s 0.0020s
+detection: 1187/1620 0.0120s 0.0020s
+detection: 1188/1620 0.0130s 0.0020s
+detection: 1189/1620 0.0130s 0.0030s
+detection: 1190/1620 0.0130s 0.0020s
+detection: 1191/1620 0.0130s 0.0025s
+detection: 1192/1620 0.0130s 0.0030s
+detection: 1193/1620 0.0130s 0.0020s
+detection: 1194/1620 0.0130s 0.0025s
+detection: 1195/1620 0.0125s 0.0025s
+detection: 1196/1620 0.0125s 0.0025s
+detection: 1197/1620 0.0130s 0.0025s
+detection: 1198/1620 0.0125s 0.0025s
+detection: 1199/1620 0.0130s 0.0020s
+detection: 1200/1620 0.0130s 0.0020s
+detection: 1201/1620 0.0125s 0.0030s
+detection: 1202/1620 0.0130s 0.0025s
+detection: 1203/1620 0.0130s 0.0020s
+detection: 1204/1620 0.0130s 0.0030s
+detection: 1205/1620 0.0125s 0.0025s
+detection: 1206/1620 0.0125s 0.0020s
+detection: 1207/1620 0.0130s 0.0020s
+detection: 1208/1620 0.0130s 0.0020s
+detection: 1209/1620 0.0135s 0.0020s
+detection: 1210/1620 0.0130s 0.0020s
+detection: 1211/1620 0.0130s 0.0020s
+detection: 1212/1620 0.0125s 0.0025s
+detection: 1213/1620 0.0125s 0.0020s
+detection: 1214/1620 0.0135s 0.0020s
+detection: 1215/1620 0.0125s 0.0025s
+detection: 1216/1620 0.0130s 0.0020s
+detection: 1217/1620 0.0125s 0.0020s
+detection: 1218/1620 0.0125s 0.0020s
+detection: 1219/1620 0.0130s 0.0020s
+detection: 1220/1620 0.0130s 0.0020s
+detection: 1221/1620 0.0125s 0.0020s
+detection: 1222/1620 0.0130s 0.0020s
+detection: 1223/1620 0.0125s 0.0020s
+detection: 1224/1620 0.0130s 0.0020s
+detection: 1225/1620 0.0130s 0.0025s
+detection: 1226/1620 0.0125s 0.0020s
+detection: 1227/1620 0.0135s 0.0020s
+detection: 1228/1620 0.0125s 0.0020s
+detection: 1229/1620 0.0130s 0.0025s
+detection: 1230/1620 0.0130s 0.0020s
+detection: 1231/1620 0.0125s 0.0025s
+detection: 1232/1620 0.0135s 0.0020s
+detection: 1233/1620 0.0125s 0.0025s
+detection: 1234/1620 0.0125s 0.0020s
+detection: 1235/1620 0.0130s 0.0025s
+detection: 1236/1620 0.0130s 0.0020s
+detection: 1237/1620 0.0130s 0.0020s
+detection: 1238/1620 0.0125s 0.0020s
+detection: 1239/1620 0.0125s 0.0025s
+detection: 1240/1620 0.0130s 0.0025s
+detection: 1241/1620 0.0135s 0.0025s
+detection: 1242/1620 0.0130s 0.0020s
+detection: 1243/1620 0.0125s 0.0020s
+detection: 1244/1620 0.0130s 0.0025s
+detection: 1245/1620 0.0125s 0.0020s
+detection: 1246/1620 0.0130s 0.0020s
+detection: 1247/1620 0.0125s 0.0025s
+detection: 1248/1620 0.0125s 0.0020s
+detection: 1249/1620 0.0130s 0.0020s
+detection: 1250/1620 0.0125s 0.0025s
+detection: 1251/1620 0.0125s 0.0015s
+detection: 1252/1620 0.0130s 0.0025s
+detection: 1253/1620 0.0125s 0.0020s
+detection: 1254/1620 0.0130s 0.0020s
+detection: 1255/1620 0.0130s 0.0020s
+detection: 1256/1620 0.0130s 0.0020s
+detection: 1257/1620 0.0135s 0.0020s
+detection: 1258/1620 0.0125s 0.0020s
+detection: 1259/1620 0.0130s 0.0020s
+detection: 1260/1620 0.0130s 0.0020s
+detection: 1261/1620 0.0125s 0.0040s
+detection: 1262/1620 0.0130s 0.0020s
+detection: 1263/1620 0.0130s 0.0020s
+detection: 1264/1620 0.0130s 0.0020s
+detection: 1265/1620 0.0125s 0.0020s
+detection: 1266/1620 0.0130s 0.0020s
+detection: 1267/1620 0.0130s 0.0020s
+detection: 1268/1620 0.0125s 0.0020s
+detection: 1269/1620 0.0135s 0.0020s
+detection: 1270/1620 0.0125s 0.0025s
+detection: 1271/1620 0.0125s 0.0020s
+detection: 1272/1620 0.0130s 0.0020s
+detection: 1273/1620 0.0130s 0.0020s
+detection: 1274/1620 0.0130s 0.0020s
+detection: 1275/1620 0.0130s 0.0020s
+detection: 1276/1620 0.0125s 0.0035s
+detection: 1277/1620 0.0130s 0.0035s
+detection: 1278/1620 0.0125s 0.0035s
+detection: 1279/1620 0.0125s 0.0020s
+detection: 1280/1620 0.0135s 0.0020s
+detection: 1281/1620 0.0125s 0.0025s
+detection: 1282/1620 0.0130s 0.0020s
+detection: 1283/1620 0.0130s 0.0020s
+detection: 1284/1620 0.0125s 0.0025s
+detection: 1285/1620 0.0125s 0.0020s
+detection: 1286/1620 0.0130s 0.0020s
+detection: 1287/1620 0.0130s 0.0020s
+detection: 1288/1620 0.0130s 0.0020s
+detection: 1289/1620 0.0130s 0.0020s
+detection: 1290/1620 0.0130s 0.0020s
+detection: 1291/1620 0.0130s 0.0020s
+detection: 1292/1620 0.0130s 0.0020s
+detection: 1293/1620 0.0130s 0.0020s
+detection: 1294/1620 0.0135s 0.0020s
+detection: 1295/1620 0.0125s 0.0020s
+detection: 1296/1620 0.0130s 0.0020s
+detection: 1297/1620 0.0125s 0.0025s
+detection: 1298/1620 0.0130s 0.0020s
+detection: 1299/1620 0.0130s 0.0020s
+detection: 1300/1620 0.0125s 0.0015s
+detection: 1301/1620 0.0130s 0.0020s
+detection: 1302/1620 0.0125s 0.0020s
+detection: 1303/1620 0.0125s 0.0020s
+detection: 1304/1620 0.0130s 0.0020s
+detection: 1305/1620 0.0125s 0.0020s
+detection: 1306/1620 0.0125s 0.0020s
+detection: 1307/1620 0.0125s 0.0020s
+detection: 1308/1620 0.0125s 0.0020s
+detection: 1309/1620 0.0130s 0.0020s
+detection: 1310/1620 0.0135s 0.0020s
+detection: 1311/1620 0.0130s 0.0020s
+detection: 1312/1620 0.0125s 0.0020s
+detection: 1313/1620 0.0130s 0.0020s
+detection: 1314/1620 0.0130s 0.0020s
+detection: 1315/1620 0.0125s 0.0020s
+detection: 1316/1620 0.0125s 0.0020s
+detection: 1317/1620 0.0125s 0.0020s
+detection: 1318/1620 0.0125s 0.0020s
+detection: 1319/1620 0.0135s 0.0020s
+detection: 1320/1620 0.0125s 0.0020s
+detection: 1321/1620 0.0135s 0.0020s
+detection: 1322/1620 0.0130s 0.0020s
+detection: 1323/1620 0.0130s 0.0020s
+detection: 1324/1620 0.0130s 0.0020s
+detection: 1325/1620 0.0130s 0.0020s
+detection: 1326/1620 0.0130s 0.0020s
+detection: 1327/1620 0.0135s 0.0025s
+detection: 1328/1620 0.0130s 0.0020s
+detection: 1329/1620 0.0135s 0.0020s
+detection: 1330/1620 0.0140s 0.0020s
+detection: 1331/1620 0.0130s 0.0020s
+detection: 1332/1620 0.0135s 0.0025s
+detection: 1333/1620 0.0130s 0.0020s
+detection: 1334/1620 0.0125s 0.0020s
+detection: 1335/1620 0.0135s 0.0020s
+detection: 1336/1620 0.0130s 0.0020s
+detection: 1337/1620 0.0130s 0.0030s
+detection: 1338/1620 0.0135s 0.0020s
+detection: 1339/1620 0.0135s 0.0020s
+detection: 1340/1620 0.0130s 0.0020s
+detection: 1341/1620 0.0125s 0.0020s
+detection: 1342/1620 0.0135s 0.0020s
+detection: 1343/1620 0.0130s 0.0020s
+detection: 1344/1620 0.0130s 0.0025s
+detection: 1345/1620 0.0130s 0.0020s
+detection: 1346/1620 0.0130s 0.0020s
+detection: 1347/1620 0.0130s 0.0020s
+detection: 1348/1620 0.0130s 0.0020s
+detection: 1349/1620 0.0130s 0.0020s
+detection: 1350/1620 0.0130s 0.0020s
+detection: 1351/1620 0.0130s 0.0020s
+detection: 1352/1620 0.0130s 0.0025s
+detection: 1353/1620 0.0130s 0.0020s
+detection: 1354/1620 0.0130s 0.0025s
+detection: 1355/1620 0.0135s 0.0020s
+detection: 1356/1620 0.0130s 0.0020s
+detection: 1357/1620 0.0135s 0.0020s
+detection: 1358/1620 0.0140s 0.0020s
+detection: 1359/1620 0.0130s 0.0020s
+detection: 1360/1620 0.0130s 0.0025s
+detection: 1361/1620 0.0135s 0.0025s
+detection: 1362/1620 0.0130s 0.0020s
+detection: 1363/1620 0.0135s 0.0020s
+detection: 1364/1620 0.0135s 0.0025s
+detection: 1365/1620 0.0135s 0.0020s
+detection: 1366/1620 0.0130s 0.0020s
+detection: 1367/1620 0.0135s 0.0025s
+detection: 1368/1620 0.0130s 0.0020s
+detection: 1369/1620 0.0135s 0.0035s
+detection: 1370/1620 0.0135s 0.0020s
+detection: 1371/1620 0.0130s 0.0025s
+detection: 1372/1620 0.0130s 0.0020s
+detection: 1373/1620 0.0135s 0.0020s
+detection: 1374/1620 0.0135s 0.0025s
+detection: 1375/1620 0.0130s 0.0020s
+detection: 1376/1620 0.0135s 0.0025s
+detection: 1377/1620 0.0130s 0.0020s
+detection: 1378/1620 0.0130s 0.0020s
+detection: 1379/1620 0.0140s 0.0020s
+detection: 1380/1620 0.0135s 0.0020s
+detection: 1381/1620 0.0130s 0.0025s
+detection: 1382/1620 0.0130s 0.0020s
+detection: 1383/1620 0.0130s 0.0020s
+detection: 1384/1620 0.0135s 0.0020s
+detection: 1385/1620 0.0130s 0.0020s
+detection: 1386/1620 0.0135s 0.0025s
+detection: 1387/1620 0.0130s 0.0035s
+detection: 1388/1620 0.0130s 0.0035s
+detection: 1389/1620 0.0130s 0.0020s
+detection: 1390/1620 0.0130s 0.0025s
+detection: 1391/1620 0.0130s 0.0020s
+detection: 1392/1620 0.0135s 0.0020s
+detection: 1393/1620 0.0130s 0.0025s
+detection: 1394/1620 0.0140s 0.0025s
+detection: 1395/1620 0.0130s 0.0025s
+detection: 1396/1620 0.0130s 0.0020s
+detection: 1397/1620 0.0130s 0.0020s
+detection: 1398/1620 0.0125s 0.0020s
+detection: 1399/1620 0.0130s 0.0020s
+detection: 1400/1620 0.0130s 0.0020s
+detection: 1401/1620 0.0130s 0.0020s
+detection: 1402/1620 0.0135s 0.0025s
+detection: 1403/1620 0.0130s 0.0020s
+detection: 1404/1620 0.0130s 0.0025s
+detection: 1405/1620 0.0135s 0.0025s
+detection: 1406/1620 0.0130s 0.0020s
+detection: 1407/1620 0.0130s 0.0025s
+detection: 1408/1620 0.0130s 0.0025s
+detection: 1409/1620 0.0130s 0.0020s
+detection: 1410/1620 0.0135s 0.0020s
+detection: 1411/1620 0.0130s 0.0025s
+detection: 1412/1620 0.0130s 0.0020s
+detection: 1413/1620 0.0140s 0.0020s
+detection: 1414/1620 0.0130s 0.0020s
+detection: 1415/1620 0.0125s 0.0020s
+detection: 1416/1620 0.0130s 0.0020s
+detection: 1417/1620 0.0130s 0.0025s
+detection: 1418/1620 0.0130s 0.0025s
+detection: 1419/1620 0.0125s 0.0020s
+detection: 1420/1620 0.0130s 0.0020s
+detection: 1421/1620 0.0130s 0.0020s
+detection: 1422/1620 0.0130s 0.0030s
+detection: 1423/1620 0.0135s 0.0025s
+detection: 1424/1620 0.0125s 0.0020s
+detection: 1425/1620 0.0135s 0.0025s
+detection: 1426/1620 0.0125s 0.0025s
+detection: 1427/1620 0.0130s 0.0020s
+detection: 1428/1620 0.0135s 0.0025s
+detection: 1429/1620 0.0135s 0.0020s
+detection: 1430/1620 0.0130s 0.0020s
+detection: 1431/1620 0.0135s 0.0020s
+detection: 1432/1620 0.0130s 0.0025s
+detection: 1433/1620 0.0125s 0.0025s
+detection: 1434/1620 0.0130s 0.0020s
+detection: 1435/1620 0.0130s 0.0020s
+detection: 1436/1620 0.0130s 0.0020s
+detection: 1437/1620 0.0130s 0.0025s
+detection: 1438/1620 0.0130s 0.0025s
+detection: 1439/1620 0.0135s 0.0025s
+detection: 1440/1620 0.0130s 0.0020s
+detection: 1441/1620 0.0130s 0.0020s
+detection: 1442/1620 0.0130s 0.0025s
+detection: 1443/1620 0.0130s 0.0020s
+detection: 1444/1620 0.0135s 0.0020s
+detection: 1445/1620 0.0130s 0.0020s
+detection: 1446/1620 0.0130s 0.0020s
+detection: 1447/1620 0.0130s 0.0020s
+detection: 1448/1620 0.0135s 0.0025s
+detection: 1449/1620 0.0130s 0.0020s
+detection: 1450/1620 0.0130s 0.0025s
+detection: 1451/1620 0.0130s 0.0025s
+detection: 1452/1620 0.0130s 0.0020s
+detection: 1453/1620 0.0130s 0.0020s
+detection: 1454/1620 0.0125s 0.0020s
+detection: 1455/1620 0.0130s 0.0020s
+detection: 1456/1620 0.0130s 0.0020s
+detection: 1457/1620 0.0130s 0.0020s
+detection: 1458/1620 0.0130s 0.0020s
+detection: 1459/1620 0.0130s 0.0020s
+detection: 1460/1620 0.0125s 0.0020s
+detection: 1461/1620 0.0130s 0.0025s
+detection: 1462/1620 0.0125s 0.0025s
+detection: 1463/1620 0.0130s 0.0020s
+detection: 1464/1620 0.0130s 0.0020s
+detection: 1465/1620 0.0135s 0.0030s
+detection: 1466/1620 0.0130s 0.0020s
+detection: 1467/1620 0.0130s 0.0020s
+detection: 1468/1620 0.0135s 0.0020s
+detection: 1469/1620 0.0140s 0.0020s
+detection: 1470/1620 0.0130s 0.0020s
+detection: 1471/1620 0.0125s 0.0025s
+detection: 1472/1620 0.0130s 0.0025s
+detection: 1473/1620 0.0125s 0.0025s
+detection: 1474/1620 0.0130s 0.0020s
+detection: 1475/1620 0.0125s 0.0020s
+detection: 1476/1620 0.0130s 0.0025s
+detection: 1477/1620 0.0135s 0.0025s
+detection: 1478/1620 0.0135s 0.0020s
+detection: 1479/1620 0.0130s 0.0020s
+detection: 1480/1620 0.0130s 0.0020s
+detection: 1481/1620 0.0130s 0.0020s
+detection: 1482/1620 0.0130s 0.0020s
+detection: 1483/1620 0.0130s 0.0025s
+detection: 1484/1620 0.0130s 0.0020s
+detection: 1485/1620 0.0135s 0.0020s
+detection: 1486/1620 0.0135s 0.0020s
+detection: 1487/1620 0.0130s 0.0020s
+detection: 1488/1620 0.0135s 0.0025s
+detection: 1489/1620 0.0125s 0.0025s
+detection: 1490/1620 0.0135s 0.0020s
+detection: 1491/1620 0.0130s 0.0020s
+detection: 1492/1620 0.0140s 0.0020s
+detection: 1493/1620 0.0135s 0.0025s
+detection: 1494/1620 0.0130s 0.0025s
+detection: 1495/1620 0.0135s 0.0020s
+detection: 1496/1620 0.0130s 0.0025s
+detection: 1497/1620 0.0130s 0.0020s
+detection: 1498/1620 0.0125s 0.0025s
+detection: 1499/1620 0.0125s 0.0020s
+detection: 1500/1620 0.0130s 0.0020s
+detection: 1501/1620 0.0130s 0.0020s
+detection: 1502/1620 0.0130s 0.0025s
+detection: 1503/1620 0.0130s 0.0020s
+detection: 1504/1620 0.0135s 0.0020s
+detection: 1505/1620 0.0125s 0.0025s
+detection: 1506/1620 0.0130s 0.0025s
+detection: 1507/1620 0.0130s 0.0030s
+detection: 1508/1620 0.0130s 0.0025s
+detection: 1509/1620 0.0130s 0.0025s
+detection: 1510/1620 0.0125s 0.0020s
+detection: 1511/1620 0.0135s 0.0020s
+detection: 1512/1620 0.0130s 0.0020s
+detection: 1513/1620 0.0130s 0.0025s
+detection: 1514/1620 0.0130s 0.0025s
+detection: 1515/1620 0.0135s 0.0025s
+detection: 1516/1620 0.0130s 0.0025s
+detection: 1517/1620 0.0130s 0.0025s
+detection: 1518/1620 0.0130s 0.0025s
+detection: 1519/1620 0.0125s 0.0025s
+detection: 1520/1620 0.0130s 0.0025s
+detection: 1521/1620 0.0130s 0.0020s
+detection: 1522/1620 0.0135s 0.0025s
+detection: 1523/1620 0.0130s 0.0020s
+detection: 1524/1620 0.0135s 0.0020s
+detection: 1525/1620 0.0130s 0.0025s
+detection: 1526/1620 0.0135s 0.0025s
+detection: 1527/1620 0.0130s 0.0020s
+detection: 1528/1620 0.0130s 0.0020s
+detection: 1529/1620 0.0130s 0.0025s
+detection: 1530/1620 0.0135s 0.0020s
+detection: 1531/1620 0.0130s 0.0030s
+detection: 1532/1620 0.0130s 0.0025s
+detection: 1533/1620 0.0130s 0.0020s
+detection: 1534/1620 0.0130s 0.0025s
+detection: 1535/1620 0.0125s 0.0020s
+detection: 1536/1620 0.0130s 0.0020s
+detection: 1537/1620 0.0130s 0.0020s
+detection: 1538/1620 0.0130s 0.0025s
+detection: 1539/1620 0.0135s 0.0020s
+detection: 1540/1620 0.0130s 0.0025s
+detection: 1541/1620 0.0135s 0.0020s
+detection: 1542/1620 0.0130s 0.0025s
+detection: 1543/1620 0.0125s 0.0020s
+detection: 1544/1620 0.0130s 0.0020s
+detection: 1545/1620 0.0130s 0.0020s
+detection: 1546/1620 0.0130s 0.0020s
+detection: 1547/1620 0.0135s 0.0020s
+detection: 1548/1620 0.0130s 0.0025s
+detection: 1549/1620 0.0130s 0.0020s
+detection: 1550/1620 0.0130s 0.0020s
+detection: 1551/1620 0.0130s 0.0020s
+detection: 1552/1620 0.0130s 0.0020s
+detection: 1553/1620 0.0130s 0.0020s
+detection: 1554/1620 0.0135s 0.0020s
+detection: 1555/1620 0.0130s 0.0020s
+detection: 1556/1620 0.0135s 0.0020s
+detection: 1557/1620 0.0130s 0.0025s
+detection: 1558/1620 0.0130s 0.0020s
+detection: 1559/1620 0.0130s 0.0020s
+detection: 1560/1620 0.0135s 0.0020s
+detection: 1561/1620 0.0130s 0.0020s
+detection: 1562/1620 0.0135s 0.0020s
+detection: 1563/1620 0.0135s 0.0020s
+detection: 1564/1620 0.0130s 0.0020s
+detection: 1565/1620 0.0130s 0.0020s
+detection: 1566/1620 0.0130s 0.0020s
+detection: 1567/1620 0.0125s 0.0020s
+detection: 1568/1620 0.0130s 0.0020s
+detection: 1569/1620 0.0130s 0.0020s
+detection: 1570/1620 0.0130s 0.0020s
+detection: 1571/1620 0.0130s 0.0020s
+detection: 1572/1620 0.0125s 0.0025s
+detection: 1573/1620 0.0130s 0.0020s
+detection: 1574/1620 0.0130s 0.0020s
+detection: 1575/1620 0.0130s 0.0020s
+detection: 1576/1620 0.0135s 0.0020s
+detection: 1577/1620 0.0135s 0.0025s
+detection: 1578/1620 0.0125s 0.0020s
+detection: 1579/1620 0.0135s 0.0025s
+detection: 1580/1620 0.0130s 0.0025s
+detection: 1581/1620 0.0135s 0.0025s
+detection: 1582/1620 0.0130s 0.0020s
+detection: 1583/1620 0.0135s 0.0025s
+detection: 1584/1620 0.0130s 0.0020s
+detection: 1585/1620 0.0135s 0.0020s
+detection: 1586/1620 0.0125s 0.0020s
+detection: 1587/1620 0.0130s 0.0025s
+detection: 1588/1620 0.0130s 0.0020s
+detection: 1589/1620 0.0125s 0.0020s
+detection: 1590/1620 0.0130s 0.0020s
+detection: 1591/1620 0.0135s 0.0025s
+detection: 1592/1620 0.0135s 0.0020s
+detection: 1593/1620 0.0130s 0.0025s
+detection: 1594/1620 0.0130s 0.0025s
+detection: 1595/1620 0.0125s 0.0020s
+detection: 1596/1620 0.0130s 0.0020s
+detection: 1597/1620 0.0135s 0.0025s
+detection: 1598/1620 0.0130s 0.0025s
+detection: 1599/1620 0.0135s 0.0020s
+detection: 1600/1620 0.0135s 0.0025s
+detection: 1601/1620 0.0130s 0.0025s
+detection: 1602/1620 0.0135s 0.0020s
+detection: 1603/1620 0.0130s 0.0020s
+detection: 1604/1620 0.0130s 0.0020s
+detection: 1605/1620 0.0130s 0.0025s
+detection: 1606/1620 0.0135s 0.0020s
+detection: 1607/1620 0.0130s 0.0020s
+detection: 1608/1620 0.0130s 0.0020s
+detection: 1609/1620 0.0130s 0.0025s
+detection: 1610/1620 0.0130s 0.0020s
+detection: 1611/1620 0.0135s 0.0020s
+detection: 1612/1620 0.0130s 0.0020s
+detection: 1613/1620 0.0130s 0.0020s
+detection: 1614/1620 0.0135s 0.0025s
+detection: 1615/1620 0.0130s 0.0020s
+detection: 1616/1620 0.0130s 0.0025s
+detection: 1617/1620 0.0135s 0.0025s
+detection: 1618/1620 0.0130s 0.0020s
+detection: 1619/1620 0.0130s 0.0020s
+detection: 1620/1620 0.0135s 0.0020s
+
+Evaluating detections
+Writing a VOC results file
+Writing b VOC results file
+Writing c VOC results file
+Writing d VOC results file
+Writing e VOC results file
+Writing f VOC results file
+Writing g VOC results file
+Writing h VOC results file
+Writing i VOC results file
+Writing j VOC results file
+Writing k VOC results file
+Writing l VOC results file
+Writing m VOC results file
+Writing n VOC results file
+Writing o VOC results file
+Writing p VOC results file
+Writing q VOC results file
+Writing r VOC results file
+Writing s VOC results file
+Writing t VOC results file
+Writing u VOC results file
+Writing v VOC results file
+Writing w VOC results file
+Writing x VOC results file
+Writing y VOC results file
+Writing z VOC results file
+Writing 0 VOC results file
+
+VOC07 metric? Yes
+
+Reading annotations
+Saving cached annotations to ./tests\2023-12-03 08_01_13.540688_train/155\annotations_cache\annotations.pkl
+
+AP for a = 0.9058
+AP for b = 0.9957
+AP for c = 0.9971
+AP for d = 0.9091
+AP for e = 1.0000
+AP for f = 0.9091
+AP for g = 0.9781
+AP for h = 1.0000
+AP for i = 0.9985
+AP for j = 0.9985
+AP for k = 1.0000
+AP for l = 0.9985
+AP for m = 0.9341
+AP for n = 0.9754
+AP for o = 0.9985
+AP for p = 0.9905
+AP for q = 1.0000
+AP for r = 0.9828
+AP for s = 0.9390
+AP for t = 0.9076
+AP for u = 1.0000
+AP for v = 1.0000
+AP for w = 1.0000
+AP for x = 0.9704
+AP for y = 1.0000
+AP for z = 0.9493
+AP for 0 = 0.9244
+Mean AP = 0.9727
+
+Results:
+0.9058
+0.9957
+0.9971
+0.9091
+1.0000
+0.9091
+0.9781
+1.0000
+0.9985
+0.9985
+1.0000
+0.9985
+0.9341
+0.9754
+0.9985
+0.9905
+1.0000
+0.9828
+0.9390
+0.9076
+1.0000
+1.0000
+1.0000
+0.9704
+1.0000
+0.9493
+0.9244
+0.9727
+77.42377435830734
+455.1540924688465
+66.16825435031654
