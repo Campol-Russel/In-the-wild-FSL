@@ -148,8 +148,10 @@ The primary metric of interest for classification models was accuracy, while for
 To load the dataset in the model, find the code ```parser.add_argument('--wildfsl_data_path', type=str,default='E:\\fsl dataset new\\dataset_resized', help='WildFSL dataset path')``` and change the path according to where the dataset is saved.
 
 #### Setting the hyperparameters
-For the SFDET and SSD hyperparameters, check the weights below and adjust the hyperparameters according to what is seen in the file.
-[a link](https://github.com/user/repo/blob/branch/other_file.md)
+For the SFDET and SSD hyperparameters, check the weights using the link and adjust the hyperparameters according to what is seen in the file.
+[SFDET-ResNet](Model Weights/SFDet-ResNet50-2023-12-03-08_01_13.540688_train_test_155.txt)
+[SSD](Model Weights/SSD-2023-12-04-02_37_34.744139_train_test_140.txt)
+
 
 ### YOLOv8 Training
 For YOLOv8, we utilized Google Collab, Ultralytics, and Roboflow
