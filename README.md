@@ -114,7 +114,9 @@ A diverse set of established models was explored for image classification tasks,
 Training Models: The dataset can be used to train models for sign language detection and recognition. Use the provided XML files to extract the bounding box coordinates and class labels for each image.
 Testing and Evaluation: You can use the dataset to evaluate the performance of pre-trained models or train your models and evaluate their accuracy on the dataset.   
 
-To set the dataset path, find the file where the format is “[model]_new.py” and find the **train_dataset, valid_dataset, and test_dataset** variables, then change it to the path where you saved the dataset folders
+To set the dataset path, find the file where the name is “main.py” and find the **train_path, valid_path, and test_path** variables, then change it to the path where you saved the dataset folders
+
+Change the variable **mode** to either test or train, depending on what mode you want to do. To change the model, change the variable **model_type** to either resnet, densenet, vgg, or alexnet.
    
 #### Setting the Hyperparameters
 To change the hyperparameters right below the path, you will see the variables for the hyperparameters. Change them to the hyperparameters as you see fit. For the benchmarking, the hyperparameters are set to the ones seen below. Take note that these hyperparameters are not the best parameters for the model these are just used for benchmarking purposes.
@@ -127,14 +129,14 @@ To change the hyperparameters right below the path, you will see the variables f
 | Optimizer               | optimizer        | SGD        |
 | Weight Decay            | weight_decay     | 0.0005     |
 | Momentum                | momentum         | 0.9        |
-| Input size              | tranforms.Resize | (224,224)  |
+| Input size              | input_size       | (224,224)  |
 | Batch size              | batch_size       | 32         |
 | Gamma                   | gamma            | 0.1        |
 
 *Take note of where the weights of the model are saved; you will need the path to load the weights in validation/testing.*
 
 #### Validation/Testing
-To load the weights of the trained model, open the file “[model]_test”, find the variable **pretrained_weights_path**, and set it to where the weights of that model are saved.
+To load the weights of the trained model, "main.py" file, find the variable **pretrained_weights_path**, and set it to where the weights of that model are saved.
 
 After running, the accuracy will be displayed. Change the hyperparameters of the training file accordingly if you are validating, and to test, just run the file to check for accuracy.
 
