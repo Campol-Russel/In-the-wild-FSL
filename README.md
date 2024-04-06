@@ -206,12 +206,14 @@ The dataset has been tested on various models, including AlexNet, VGGNet, ResNet
 
 Classification Models
 
-| Model            | Overall Accuracy | Link to weights |
-| ---------------- | ---------------- | --------------- |
-| AlexNet          | 72.6%            | link            |
-| RestNet50        | 87.3%            | link            |
-| VGG              | 90.1%            | link            |
-| DenseNet         | 93.2%            | link            |
+| Model            | Overall Accuracy |
+| ---------------- | ---------------- |
+| AlexNet          | 72.6%            |
+| RestNet50        | 87.3%            |
+| VGG              | 90.1%            |
+| DenseNet         | 93.2%            |
+
+Weights: https://drive.google.com/drive/folders/14oHMxXTEqFttbYWKrAMwKQGb7NF0SvVN?usp=sharing
 
 Object Detection Models
 
