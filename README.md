@@ -217,12 +217,13 @@ Weights: https://drive.google.com/drive/folders/14oHMxXTEqFttbYWKrAMwKQGb7NF0SvV
 
 Object Detection Models
 
-| Model            | Mean Average Precision  | Link to weights     |
-| ---------------- | ----------------------- | ------------------- |
-| SSD              | 96.1%                   | link                |
-| SFDET-DenseNet   | 97.3%                   | link                |
-| YOLOv8           | 98.8%                   | link                |
+| Model            | Mean Average Precision  |
+| ---------------- | ----------------------- |
+| SSD              | 96.1%                   |
+| SFDET-DenseNet   | 97.3%                   |
+| YOLOv8           | 98.8%                   |
 
+Weights: https://github.com/Campol-Russel/In-the-wild-FSL/tree/main/Model%20Weights
 
 ## Contact Us
 If you have any questions, feel free to contact us at:
