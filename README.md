@@ -52,7 +52,7 @@ The objective of this study is to create and release a Filipino Sign Language (F
 
 
 ## Abstract
-In the Philippines, there is a scarcity of research on the deaf and mute culture, making institutions exclusive and limiting opportunities for the growth of the deaf and mute. This study aims to contribute to the development of real-time and accessible sign language detection and recognition systems. The dataset introduces a Filipino Sign Language dataset, addressing existing image dataset gaps. Data collection involved 100 adult participants capturing alphabet signs in varying environments. The open-source dataset contains 8,100 images, benchmarked in different models for broader use in the Filipino deaf community.
+In the Philippines, there is a scarcity of research on the deaf and mute culture, making institutions exclusive and limiting opportunities for the growth of the deaf and mute. This study aims to contribute to the development of real-time and accessible sign language detection and recognition systems. The dataset introduces a Filipino Sign Language dataset, addressing existing image dataset gaps. Data collection involved 100 adult participants capturing alphabet signs in varying environments. The open-source dataset contains 8,100 images benchmarked in different models for broader use in the Filipino deaf community.
 
 ## Sample Visuals
 ![Sample Images of the Dataset](img/comp.png)
@@ -65,7 +65,7 @@ Thank you for your interest in accessing the Filipino Sign Language (FSL) image 
 ### Access Request Process:
 1. **Submission of Request:**
    - State your interest in accessing the dataset.
-   - Submit a request form with representative's name, project details, intended use, and contact details.
+   - Submit a request form with the representative's name, project details, intended use, and contact details.
 2. **Dataset Access Review:**
    - Supervisors will review requests to ensure eligibility and prevent misuse.
   
@@ -82,21 +82,21 @@ Thank you for your interest in accessing the Filipino Sign Language (FSL) image 
    - Python
    - Google Collab
 
-## API/Extensions/Libraties to run
+## API/Extensions/Libraries to run
 ### Image Classification Models
    1. torch - PyTorch deep learning framework.
    2. torch.nn - Module for constructing neural networks.
    3. torchvision.models - Pretrained models for computer vision.
    4. torchvision.transforms - Image transformations for data augmentation.
-   5. torch.utils.data.DataLoader - DataLoader class for managing dataset loading in PyTorch.
-   6. torch.utils.data.Dataset - Dataset class for creating custom datasets in PyTorch.
+   5. torch.utils.data.DataLoader - DataLoader class is used to manage dataset loading in PyTorch.
+   6. torch.utils.data.Dataset - Dataset class is used to create custom datasets in PyTorch.
    7. tqdm - A fast, extensible progress bar for loops and pipelines.
    8. PIL.Image - The Python Imaging Library (PIL) module to open, manipulate, and save image files.
    9. os - Operating System dependent functionalities.
    10. xml.etree.ElementTree - A fast and simple XML API in Python.
    12. matplotlib.pyplot - A plotting library for the Python programming language and its numerical mathematics extension NumPy.
    13. numpy - A fundamental package for scientific computing with Python.
-   14. torch.optim.lr_scheduler.MultiStepLR - Multi step learning rate scheduler.
+   14. torch.optim.lr_scheduler.MultiStepLR - Multi-step learning rate scheduler.
    15. sklearn - The scikit-learn library for machine learning in Python.
    16. sklearn.model_selection.train_test_split - A method to split arrays or matrices into random train and test subsets.
 
@@ -114,12 +114,12 @@ A diverse set of established models was explored for image classification tasks,
 Training Models: The dataset can be used to train models for sign language detection and recognition. Use the provided XML files to extract the bounding box coordinates and class labels for each image.
 Testing and Evaluation: You can use the dataset to evaluate the performance of pre-trained models or train your models and evaluate their accuracy on the dataset.   
 
-To set the dataset path, find the file where the name is “main.py” and find the **train_path, valid_path, and test_path** variables, then change it to the path where you saved the dataset folders
+To set the dataset path, find the file where the name is “main.py” and find the **train_path, valid_path, and test_path** variables, then change it to the path where you saved the dataset folders.
 
 Change the variable **mode** to either test or train, depending on what mode you want to do. To change the model, change the variable **model_type** to either resnet, densenet, vgg, or alexnet.
    
 #### Setting the Hyperparameters
-To change the hyperparameters right below the path, you will see the variables for the hyperparameters. Change them to the hyperparameters as you see fit. For the benchmarking, the hyperparameters are set to the ones seen below. Take note that these hyperparameters are not the best parameters for the model these are just used for benchmarking purposes.
+To change the hyperparameters right below the path, you will see the variables for the hyperparameters. Change them to the hyperparameters as you see fit. For the benchmarking, the hyperparameters are set to the ones seen below. Take note that these hyperparameters are not the best parameters for the model; these are just used for benchmarking purposes.
   
 | Hyperparameter          | Variable Name    | Value      |
 | ----------------------- | ---------------- | ---------- |
@@ -161,13 +161,13 @@ For the SFDET and SSD hyperparameters, check the weights using the link and adju
 For YOLOv8, we utilized Google Collab, Ultralytics, and Roboflow
 
 #### Training 
-1. To load the dataset into Google Collab, we utilized Roboflow as a medium in connecting to Google Collab. We uploaded our data set to a Roboflow dataset and got the code snippet for the dataset. To access the code, you need to go to generate to generate a new version of the dataset or the version if you already have an existing one.
+1. To load the dataset into Google Collab, we utilized Roboflow as a medium to connect to Google Collab. We uploaded our data set to a Roboflow dataset and got the code snippet for the dataset. To access the code, you need to go to generate to generate a new version of the dataset or the version if you already have an existing one.
 2. In the versions tab, click the custom train and upload the generated version.
 3. Set the dropdown menu of the models to YOLOv8, then get the code snippet.
 4. Paste the code snippet to your notebook, and after you run that cell, the dataset should be loaded into your notebook.
    
 #### Setting the hyperparameters
-To train and set the hyperparameters for the YOLOv8, use the code snippet below and change the hyperparameters as needed the values used for this run are just for benchmarking purposes and may not be the best hyperparameters for this model. 
+To train and set the hyperparameters for the YOLOv8, use the code snippet below and change the hyperparameters as needed; the values used for this run are just for benchmarking purposes and may not be the best hyperparameters for this model. 
 
 | Hyperparameter          | Variable Name    | Value      |
 | ----------------------- | ---------------- | ---------- |
@@ -202,7 +202,7 @@ To test or validate, use the code snippet below
 https://youtu.be/wuZtUMEiKWY
 
 ## Model Evaluation
-The dataset has been tested on various models, including AlexNet, VGGNet, ResNet, DenseNet, SSD, YOLOv8, and SFDet. The hyperparameters used for this evaluation is seen in setting the hyperparameter part. The performance and best weights of each model are seen below
+The dataset has been tested on various models, including AlexNet, VGGNet, ResNet, DenseNet, SSD, YOLOv8, and SFDet. The hyperparameters used for this evaluation are seen in setting the hyperparameter part. The performance and best weights of each model are seen below.
 
 Classification Models
 
